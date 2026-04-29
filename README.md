@@ -34,7 +34,16 @@ El administrador debe poder exportar un archivo en formato JSON que contenga un 
 **RF7 - Gestión de Estado de Proyectos:**
 El administrador debe tener la capacidad de actualizar la etapa de cada proyecto (Diseño, Licitación, Ejecución), notificando automáticamente a los usuarios que han participado con opiniones.
 
+### **REQUERIMIENTOS NO FUNCIONALES (RNF) :** 
 
+**RNF1 - Usabilidad (Accesibilidad):**
+La interfaz debe cumplir con los estándares W3C (WCAG2.1), asegurando un contraste de colores adecuado y tamaños mínimos de botones de 44x44 píxeles, facilitando su uso en dispositivos móviles, especialmente para adultos mayores.
+
+**RNF2 - Seguridad (Protección de datos):**
+Todas las comunicaciones entre cliente y servidor deben realizarse mediante el protocolo HTTPS, garantizando la protección de los datos sensibles conforme a la normativa de protección de la vida privada.
+
+**RNF3 - Rendimiento (Tiempo de carga):**
+Dado que el sistema es una SPA, el tiempo de carga inicial del archivo index.html y los recursos base no debe superar los 3 segundos en una conexión 4G estándar, con el fin de evitar la pérdida de usarios
 
 ## EP1.2
 
