@@ -10,9 +10,18 @@ están fuera de inicio se sesión registrarse ya que deben estar
 inmersas en la propuesta. Dentro de las funcionalidades deben
 considerar dos tipos de roles (ejemplo: usuario y admin)
 
+
 ## EP1.2
 
 **SE REQUIERE :** Justificación del problema y análisis del usuario objetivo.
+
+**JUSTIFICACIÓN DEL PROBLEMA :** El problema que se presenta en el desafío 20 "Las municipalidades no han consolidado mecanismos  de participación ciudadana que involucren a vecinos en la toma de decisiones" no es un problema a ignorar, es una incompletitud a una ley judicial y una falta grave en la participación de los ciudadanos para entregar un feedback sobre los proyectos públicos que se realizan en su localidad.
+
+Esa falta de participación lleva a múltiples conflictos como la falta de comunicación entre el ciudadano y el municipio, la desinformación sobre el uso de los fondos municipales en los proyectos de la municipalidad y la desconfianza pública a la hora de participar en estos proyectos.
+
+**PÚBLICO OBJETIVO :** Este problema es muy importante porque aborda un público objetivo que es universal y heterogéneo : cualquier ciudadano que quiera retroalimentar los proyectos municipales de su localidad.
+
+Debemos tener en cuenta que este público heterogéneo será muy variado; hombres y mujeres de distintas edades, y con opiniones diferentes. Por eso, el filtrado de los ciudadanos deberá ser fundamental, para no obtener únicamente un feedback general de los ciudadanos, sino también filtros más específicos por género, rango etario y otras características relevantes y apropiadas para saber qué grupo de personas está más conforme o disconforme con diversos proyectos municipales.
 
 ## EP1.3
 
