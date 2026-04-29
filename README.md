@@ -10,6 +10,31 @@ están fuera de inicio se sesión registrarse ya que deben estar
 inmersas en la propuesta. Dentro de las funcionalidades deben
 considerar dos tipos de roles (ejemplo: usuario y admin)
 
+### **REQUERIMIENTOS FUNCIONALES (RF) :** 
+
+**RF1 - Visualización georreferenciada de proyectos:**
+El sistema debe presentar un mapa interactivo, utilizando el DOM y APIs de mapas, que muestre los proyectos municipales activos cercanos a la ubicación GPS del usuario.
+
+**RF2 - Registro de experiencia multimodal:**
+El usuario debe poder enviar una “Ficha de Experiencia” que incluya texto, una fotografía capturada desde la cámara del dispositivo móvil y etiquetas de sentimiento como Enojo, Alegría o Preocupación.
+
+**RF3 - Seguimiento de la incidencia:**
+El sistema debe permitir al ciudadano consultar el estado de su opinión, mostrando estados como “Recibida”, “En análisis por IA” o “Considerada en el informe final”.
+
+**RF4 - Buzón de Sugerencias PWA (Offline):**
+Mediante el uso de Service Workers, el usuario podrá redactar su opinión incluso sin conexión a internet (por ejemplo, en zonas rurales), enviándose automáticamente cuando se recupere la conectividad.
+Rol: Administrador (Funcionario Municipal).
+
+**RF5 - Dashboard de Análisis de Sentimiento (IA):**
+El sistema debe procesar los textos ingresados mediante un modelo de lenguaje, generando visualizaciones del “clima ciudadano” para cada proyecto.
+
+**RF6 - Generador de Reportes JSON para Transparencia:**
+El administrador debe poder exportar un archivo en formato JSON que contenga un resumen de las 10 preocupaciones más frecuentes de los ciudadanos, para su publicación en el portal de transparencia.
+
+**RF7 - Gestión de Estado de Proyectos:**
+El administrador debe tener la capacidad de actualizar la etapa de cada proyecto (Diseño, Licitación, Ejecución), notificando automáticamente a los usuarios que han participado con opiniones.
+
+
 
 ## EP1.2
 
