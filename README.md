@@ -69,6 +69,57 @@ y densidad de la información. Se deber´a Incluir en los mockups
 dos formularios relacionados al inicio de sesión de usuarios y registro, considerando los campos: Nombre de usuario, RUT, Correo Electrónico, Region, Comuna, Contraseña, Confirmación de
 Contraseña y aceptación de términos y condiciones. Considerando validaciones visuales y diseño centrado en el usuario.
 
+Definir las pantallas a presentar
+
+Antes de programar cada mockup, debemos modelar qué vamos a hacer en cada pantalla;
+
+A continuación se presenta la definición de las 7 pantallas (Mockups)
+basándonos en los 7 requerimientos funcionales:
+
+**Pantalla 1: Registro del usuario**
+
+Campos: Nombre, RUT, correo electrónico, región y comuna (mediante listas desplegables), contraseña, confirmación de contraseña y aceptación de términos y condiciones.
+
+UX: Validación visual en tiempo real, por ejemplo, borde verde cuando el RUT es válido y borde rojo cuando las contraseñas no coinciden.
+
+**Pantalla 2: Inicio de sesión**
+
+Campos: Correo electrónico o RUT, y contraseña.
+
+UX: Incluye opción de “Olvidé mi contraseña” y acceso directo al formulario de registro.
+
+**Pantalla 3: Dashboard principal y mapa de proyectos (RF1)**
+
+Contenido: Mapa interactivo que ocupa aproximadamente el 70% de la pantalla, donde se renderizan los proyectos mediante el DOM.
+
+Web: Filtros laterales que permiten clasificar los proyectos por tipo.
+
+Móvil: Botón flotante para centrar la vista en la ubicación actual del usuario.
+
+**Pantalla 4: Detalles del proyecto (RF7)**
+
+Contenido: Imágenes del proyecto, descripción técnica y una barra de progreso que indica la etapa (Diseño, Licitación o Ejecución).
+
+Jerarquía visual: Título destacado, estado actual claramente visible y botón principal “Dar mi opinión”.
+
+**Pantalla 5: Formulario de experiencia ciudadana (RF2)**
+
+Componentes: Selector de sentimiento mediante emojis, campo de texto para describir la experiencia y opción para adjuntar una fotografía.
+
+UX: Indicador de carga durante la subida de la imagen.
+
+**Pantalla 6: Seguimiento de las opiniones enviadas (RF3)**
+
+Contenido: Listado de opiniones enviadas por el usuario.
+
+Cada elemento incluye una etiqueta visual  con código de color que indica el estado, por ejemplo: rojo para “No recibida”, azul para “Recibida” y verde para “Considerada”.
+
+**Pantalla 7: Panel de Administración + Análisis con IA integrada (RF5)**
+
+Contenido: Vista exclusiva para administradores. Incluye gráficos (de barras o torta) que muestran el sentimiento general y nubes de palabras clave generadas por IA.
+Web: Tabla detallada con opción de exportar datos en formato JSON (RF6).
+
+
 
 ## EP1.4
 
