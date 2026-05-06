@@ -174,3 +174,13 @@ de vistas:
 previamente definida en ionic-react (al menos 4). Uso de componentes propios de Ionic (IonPage, IonHeader, IonContent, Ion-
 Tabs, IonMenu, etc). Separación estructural del código en carpetas
 (pages, components, routes, services):
+
+**Para ello, vamos a rescatar las mejores 4 pantallas/mockup hechas en figma, vamos a mejorarlas y vamos a programarlas y formatearlas adecuadamente en Ionic-React**
+
+**Pantalla 1 mejorada en Ionic-React :**
+
+**Pantalla 2 mejorada en Ionic-React :**
+
+**Pantalla 3 mejorada en Ionic-React :**
+
+**Pantalla 4 mejorada en Ionic-React :**
