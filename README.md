@@ -129,6 +129,8 @@ UX: Indicador de carga durante la subida de la imagen.
 
 **Pantalla 5 en figma :**
 
+https://www.figma.com/make/ZS4MkMDVGzOTao3FM2lnYe/Formulario-de-experiencia-ciudadana?t=shKLnrYb6jk4YCNZ-1
+
 **Pantalla 6: Seguimiento de las opiniones enviadas (RF3)**
 
 Contenido: Listado de opiniones enviadas por el usuario.
