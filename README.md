@@ -139,6 +139,8 @@ Cada elemento incluye una etiqueta visual  con código de color que indica el es
 
 **Pantalla 6 en figma :**
 
+https://www.figma.com/make/21hvoNznzCHCVZByX96e8t/Opinion-Tracking-Screen?t=shKLnrYb6jk4YCNZ-1
+
 **Pantalla 7: Panel de Administración + Análisis con IA integrada (RF5)**
 
 Contenido: Vista exclusiva para administradores. Incluye gráficos (de barras o torta) que muestran el sentimiento general y nubes de palabras clave generadas por IA.
