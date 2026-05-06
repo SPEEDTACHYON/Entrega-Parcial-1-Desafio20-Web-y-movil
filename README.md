@@ -82,11 +82,11 @@ Campos: Nombre, RUT, correo electrónico, región y comuna (mediante listas desp
 
 UX: Validación visual en tiempo real, por ejemplo, borde verde cuando el RUT es válido y borde rojo cuando las contraseñas no coinciden.
 
-```
+**Pantalla 1 en Figma :**
 
 https://www.figma.com/make/LW8dK6owJ8XT9LZLT51Niz/User-Registration-Screen?t=2LPp4ppkcWkFh9Kj-1
 
-```
+
 
 
 **Pantalla 2: Inicio de sesión**
