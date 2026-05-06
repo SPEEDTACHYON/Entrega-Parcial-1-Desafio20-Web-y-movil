@@ -107,6 +107,10 @@ Web: Filtros laterales que permiten clasificar los proyectos por tipo.
 
 Móvil: Botón flotante para centrar la vista en la ubicación actual del usuario.
 
+**Pantalla 3 en figma :**
+
+https://www.figma.com/make/1MpwK8OKBUSpeFVQDzzVc3/Dashboard-with-Interactive-Map?t=2LPp4ppkcWkFh9Kj-1
+
 **Pantalla 4: Detalles del proyecto (RF7)**
 
 Contenido: Imágenes del proyecto, descripción técnica y una barra de progreso que indica la etapa (Diseño, Licitación o Ejecución).
