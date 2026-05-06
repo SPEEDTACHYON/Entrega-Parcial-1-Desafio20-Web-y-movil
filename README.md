@@ -148,6 +148,7 @@ Web: Tabla detallada con opción de exportar datos en formato JSON (RF6).
 
 **Pantalla 7 en figma :**
 
+https://www.figma.com/make/5Ne4bX9aY9ntkOzP8B2Cv8/Admin-Panel-with-AI-Analysis?t=shKLnrYb6jk4YCNZ-1
 
 ## EP1.4
 
