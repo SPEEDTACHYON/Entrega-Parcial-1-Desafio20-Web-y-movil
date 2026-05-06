@@ -117,11 +117,17 @@ Contenido: Imágenes del proyecto, descripción técnica y una barra de progreso
 
 Jerarquía visual: Título destacado, estado actual claramente visible y botón principal “Dar mi opinión”.
 
+**Pantalla 4 en figma :**
+
+https://www.figma.com/make/noHrlTFykEPsEgR8rSE0rW/Project-Details-Screen?t=shKLnrYb6jk4YCNZ-1
+
 **Pantalla 5: Formulario de experiencia ciudadana (RF2)**
 
 Componentes: Selector de sentimiento mediante emojis, campo de texto para describir la experiencia y opción para adjuntar una fotografía.
 
 UX: Indicador de carga durante la subida de la imagen.
+
+**Pantalla 5 en figma :**
 
 **Pantalla 6: Seguimiento de las opiniones enviadas (RF3)**
 
@@ -129,11 +135,14 @@ Contenido: Listado de opiniones enviadas por el usuario.
 
 Cada elemento incluye una etiqueta visual  con código de color que indica el estado, por ejemplo: rojo para “No recibida”, azul para “Recibida” y verde para “Considerada”.
 
+**Pantalla 6 en figma :**
+
 **Pantalla 7: Panel de Administración + Análisis con IA integrada (RF5)**
 
 Contenido: Vista exclusiva para administradores. Incluye gráficos (de barras o torta) que muestran el sentimiento general y nubes de palabras clave generadas por IA.
 Web: Tabla detallada con opción de exportar datos en formato JSON (RF6).
 
+**Pantalla 7 en figma :**
 
 
 ## EP1.4
