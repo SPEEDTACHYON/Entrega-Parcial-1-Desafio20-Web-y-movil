@@ -179,8 +179,16 @@ Tabs, IonMenu, etc). Separación estructural del código en carpetas
 
 **Pantalla 1 mejorada en Ionic-React :**
 
+Mejora de pantalla 1 de Figma
+
 **Pantalla 2 mejorada en Ionic-React :**
+
+Mejora de pantalla 3 de figma
 
 **Pantalla 3 mejorada en Ionic-React :**
 
+Mejora de pantalla 5 de Figma
+
 **Pantalla 4 mejorada en Ionic-React :**
+
+Mejora de pantalla 7 de Figma
