@@ -95,6 +95,10 @@ Campos: Correo electrónico o RUT, y contraseña.
 
 UX: Incluye opción de “Olvidé mi contraseña” y acceso directo al formulario de registro.
 
+**Pantalla 2 en Figma :**
+
+https://www.figma.com/make/4HRuC9hR0ukHdUxpiYLNnL/Login-form-with-recovery-option?t=2LPp4ppkcWkFh9Kj-1
+
 **Pantalla 3: Dashboard principal y mapa de proyectos (RF1)**
 
 Contenido: Mapa interactivo que ocupa aproximadamente el 70% de la pantalla, donde se renderizan los proyectos mediante el DOM.
