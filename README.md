@@ -187,6 +187,8 @@ https://www.figma.com/make/M7Hk2VcjIA1xjuolGGWcD5/User-Registration-Form?t=F2JOR
 
 Mejora de pantalla 2 de figma
 
+https://www.figma.com/make/39XjHSHB4gaiOrYpM81hSr/Login-form-redesign?t=shKLnrYb6jk4YCNZ-1
+
 **Pantalla 3 mejorada en Ionic-React :**
 
 Mejora de pantalla 5 de Figma
