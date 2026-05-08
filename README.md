@@ -195,4 +195,4 @@ Mejora de pantalla 5 de Figma
 
 **Pantalla 4 mejorada en Ionic-React :**
 
-Mejora de pantalla 7 de Figma
+Mejora de pantalla 6 de Figma
