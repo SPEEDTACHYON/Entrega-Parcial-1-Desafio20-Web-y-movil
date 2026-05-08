@@ -76,6 +76,8 @@ Antes de programar cada mockup, debemos modelar qué vamos a hacer en cada panta
 A continuación se presenta la definición de las 7 pantallas (Mockups)
 basándonos en los 7 requerimientos funcionales:
 
+**Disclaimer** : Para crear las pantallas en Figma se usaron directamente estas especificaciones en el readme.md y se utilizo la función "Describe tu idea y hazla realidad" de Figma, siempre analizando el contenido entregado y realizandose mejoras técnicas básicas y comentarios en las pantalla en las cuales hubieron ciertos problemas, insuficiencias o discrepancias de acuerdo al correcto desarrollo de interfaces aprendido en el curso.
+
 **Pantalla 1: Registro del usuario**
 
 Campos: Nombre, RUT, correo electrónico, región y comuna (mediante listas desplegables), contraseña, confirmación de contraseña y aceptación de términos y condiciones.
