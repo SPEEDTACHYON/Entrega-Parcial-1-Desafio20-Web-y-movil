@@ -181,6 +181,8 @@ Tabs, IonMenu, etc). Separación estructural del código en carpetas
 
 Mejora de pantalla 1 de Figma
 
+https://www.figma.com/make/M7Hk2VcjIA1xjuolGGWcD5/User-Registration-Form?t=F2JORuMz6ErQLyxY-1
+
 **Pantalla 2 mejorada en Ionic-React :**
 
 Mejora de pantalla 3 de figma
