@@ -198,3 +198,5 @@ https://www.figma.com/make/fOSettPhdhVn0tbhoYIRss/Ciudadana-Experience-Form?t=Su
 **Pantalla 4 mejorada en Ionic-React :**
 
 Mejora de pantalla 6 de Figma
+
+https://www.figma.com/make/moznRMtLa2bypWqTDG7BFd/Opinion-Tracking-Screen?t=F2JORuMz6ErQLyxY-1
