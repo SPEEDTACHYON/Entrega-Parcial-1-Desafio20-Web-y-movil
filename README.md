@@ -175,7 +175,7 @@ previamente definida en ionic-react (al menos 4). Uso de componentes propios de 
 Tabs, IonMenu, etc). Separación estructural del código en carpetas
 (pages, components, routes, services):
 
-**Para ello, vamos a rescatar las mejores 4 pantallas/mockup hechas en figma, vamos a mejorarlas y vamos a programarlas y formatearlas adecuadamente con el uso de Ionic-React**
+**Para ello, vamos a rescatar las mejores 4 pantallas/mockup hechas en figma, vamos a mejorarlas y vamos a programarlas y formatearlas adecuadamente con el uso de Ionic-React en Figma**
 
 **Pantalla 1 mejorada en Ionic-React :**
 
