@@ -185,7 +185,7 @@ https://www.figma.com/make/M7Hk2VcjIA1xjuolGGWcD5/User-Registration-Form?t=F2JOR
 
 **Pantalla 2 mejorada en Ionic-React :**
 
-Mejora de pantalla 3 de figma
+Mejora de pantalla 2 de figma
 
 **Pantalla 3 mejorada en Ionic-React :**
 
