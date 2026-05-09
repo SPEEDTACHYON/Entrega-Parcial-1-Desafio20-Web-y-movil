@@ -97,8 +97,6 @@ UX: Validación visual en tiempo real, por ejemplo, borde verde cuando el RUT es
 https://www.figma.com/make/LW8dK6owJ8XT9LZLT51Niz/User-Registration-Screen?t=2LPp4ppkcWkFh9Kj-1
 
 
-
-
 **Pantalla 2: Inicio de sesión**
 
 Campos: Correo electrónico o RUT, y contraseña.
@@ -153,7 +151,7 @@ https://www.figma.com/make/21hvoNznzCHCVZByX96e8t/Opinion-Tracking-Screen?t=shKL
 
 **Pantalla 7: Panel de Administración + Análisis con IA integrada (RF5)**
 
-Contenido: Vista exclusiva para administradores. Incluye gráficos (de barras o torta) que muestran el sentimiento general y nubes de palabras clave generadas por IA.
+Contenido: Vista exclusiva para administradores. Incluye gráficos (de barras o torta) que muestran el sentimiento general y submenú para gestión de proyectos : añadir o actualizar estado de proyectos.
 Web: Tabla detallada con opción de exportar datos en formato JSON (RF6).
 
 **Pantalla 7 en figma :**
