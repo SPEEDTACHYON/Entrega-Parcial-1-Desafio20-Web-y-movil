@@ -161,6 +161,46 @@ jerárquicas entrevistas; (c) Flujo de navegación entre funcionalidades; (d) di
 puntos críticos de interacción; (g) coherencia de experiencia entre dispositivos; (h) breve justificación técnica de las decisiones adoptadas, considerando usabilidad, eficiencia de interacción, claridad
 estructural y escalabilidad de la arquitectura frontend:
 
+### Mapa de navegacion
+<img width="5177" height="2886" alt="Mapa de navegacion@2x" src="https://github.com/user-attachments/assets/c4ec87c2-6aad-4b87-ac63-be21ac3da50b" />
+Para este mapa de navegación se utilizó el color azul para las rutas principales y naranjo para las rutas secundarias
+
+**Rutas principales:**
+
+- Inicio de sesión
+- Dashboard usuario
+- Panel admin
+
+**Rutas secundarias:**
+
+- Detalle proyecto
+- Formulario de opinión
+- Seguimiento de opiniones
+- Gestión de proyectos
+
+
+
+### Taskflow Entregar opinión
+<img width="6845" height="1163" alt="Taskflow 1@2x" src="https://github.com/user-attachments/assets/5409b48c-af78-455a-9d81-02b6d9c65ba1" />
+
+**Puntos críticos**
+
+- Autorización GPS: El flujo puede fallar si el usuario no accede permisos para GPS
+- Carga multimedia: El flujo puede fallar al momento de subir la foto debido al peso de estas o a la latencia de red 
+
+### Taskflow Exportar análisis detallado JSON
+<img width="4660" height="868" alt="Taskflow 2@2x (2)" src="https://github.com/user-attachments/assets/46f4a3cb-e5c8-4024-8e58-c10c6daed73b" />
+
+**Puntos críticos**
+
+- Exportar análisis: Si existen muchas opiniones el exportarlas puede tardar
+- Exportar sin opiniones: Si aun no existen opiniones sobre un proyecto, al exportar va a entregar un archivo vacio
+
+### Coherencia de experiencia entre dispositivos
+Para poder garantizar la adaptabilidad del sistema a distintos tipos de dispositivos se hará uso de componentes ION- tabs para una navegación en moviles y ION- menu para la versión web
+
+### Justificación de técnicas adoptadas
+Una de las principales técnicas adoptadas fue la separación de roles para las personas que sean administradores y para las que sean usuarios, de modo que dependiendo del caso, solo se les muestre la información necesaria para cada uno de ellos, de esta forma evitando una sobrecarga de información a través de una separación jerárquica. También para poder garantizar la escalabilidad del proyecto, se hace uso de una estructura modular con carpetas para que la arquitectura crezca sin afectar la mantenibilidad del codigo. Finalmente para que la aplicación sea lo más eficiente posible y tenga una alta usabilidad se optó por taskflow simple y directo a la hora de realizar acciones, como por ejemplo el de entregar una opinión a un proyecto.
 
 ## EP1.5
 
