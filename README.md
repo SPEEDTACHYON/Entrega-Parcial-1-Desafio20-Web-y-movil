@@ -307,11 +307,11 @@ https://www.figma.com/make/39XjHSHB4gaiOrYpM81hSr/Login-form-redesign?t=shKLnrYb
 
 **Pantalla 3 mejorada en Ionic-React :**
 
-Mejora de pantalla 5 de Figma
+Mejora de pantalla 3 de Figma
 
 https://www.figma.com/make/fOSettPhdhVn0tbhoYIRss/Ciudadana-Experience-Form?t=Su82dOs9Bv3x1frr-1
 
-**Pantalla 4 mejorada en Ionic-React :**
+**Pantalla 6 mejorada en Ionic-React :**
 
 Mejora de pantalla 6 de Figma
 
