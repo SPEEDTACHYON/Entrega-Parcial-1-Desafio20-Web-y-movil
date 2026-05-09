@@ -5,9 +5,9 @@ En el siguiente repositorio de github se muestra el directorio readme.md con tod
 
 **Joaquín Rojas, rol : Documentador de readme.md y pantallas de Figma (github: SPEEDTACHYON)**
 
-**Vicente Robles, rol : diseñador de los diagramas (github: vichoRobles)**
+**Vicente Robles, rol : Diseñador de los diagramas (github: vichoRobles)**
 
-**Alfredo Escobar, rol : programador de pantallas en Ionic-React (github: pancakes2)**
+**Alfredo Escobar, rol : Programador de pantallas en Ionic-React (github: pancakes2)**
 
 ## EP1.1
 
