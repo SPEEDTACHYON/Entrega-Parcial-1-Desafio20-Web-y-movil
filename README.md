@@ -217,6 +217,72 @@ Una de las principales técnicas adoptadas fue la separación de roles para las 
 Redirecciones (ejemplo: login obligatorio); (d) Estructura modular
 de vistas:
 
+A continuación se darán las especificaciones técnicas para el programador :
+
+## (a) Uso de React Router
+
+React Router constituye la base de la navegación dentro de la SPA (Single Page Application).
+
+**Especificación:**
+
+Se recomienda utilizar la versión más reciente de React Router (v6 o superior).
+
+**Implementación:**
+
+La aplicación debe contar con un componente central llamado AppRouter.jsx, encargado de envolver toda la aplicación mediante <BrowserRouter>. Además, toda navegación interna debe realizarse utilizando el componente <Link> o el hook useNavigate, evitando así recargas completas de la página (F5) y mejorando la experiencia del usuario.
+
+
+## (b) Rutas Públicas y Rutas Protegidas
+
+El sistema debe diferenciar claramente las vistas accesibles para cualquier usuario y aquellas restringidas según el estado de autenticación.
+
+**Rutas Públicas:**
+Son accesibles para todos los usuarios, por ejemplo:
+- Landing Page
+- Login
+- Registro
+
+**Rutas Protegidas:**
+Solo pueden ser utilizadas cuando existe una sesión activa o un token válido, por ejemplo:
+- Dashboard
+- Formulario de Experiencia
+- Panel de Administración
+
+**Componente Wrapper:**
+Se debe implementar un componente de orden superior (HOC) llamado ProtectedRoute, cuya función será validar el estado del usuario antes de permitir el acceso a una vista protegida.
+
+
+## (c) Redirecciones (Login Obligatorio)
+
+El sistema debe gestionar automáticamente el flujo de navegación cuando un usuario no cuenta con los permisos necesarios.
+
+**Redirección hacia Login:**
+
+Si un usuario intenta acceder manualmente a una ruta restringida, como /admin, sin haber iniciado sesión, el sistema deberá redireccionarlo automáticamente a /login utilizando el componente <Navigate to="/login" />.
+
+**Redirección hacia Home o Dashboard:**
+
+Si un usuario ya autenticado intenta acceder nuevamente a /login, deberá ser redirigido automáticamente a su Dashboard para evitar conflictos o duplicidad de sesión.
+
+
+## (d) Estructura Modular de Vistas
+
+La organización del proyecto debe seguir una estructura modular que facilite la escalabilidad y el mantenimiento del sistema.
+
+**División de carpetas:**
+
+Se recomienda separar claramente los componentes reutilizables de las páginas completas.
+
+**- /src/pages:**
+Contendrá las vistas principales del sistema, correspondientes a las siete pantallas definidas anteriormente.
+
+**- /src/components:**
+Contendrá componentes reutilizables y de menor tamaño, como botones, campos de entrada (inputs), barras de navegación, entre otros.
+
+**Un archivo por vista:**
+
+Cada pantalla principal debe contar con su propio archivo .jsx independiente, importando únicamente los componentes necesarios para mantener el código ordenado, reutilizable y fácil de mantener.
+
 
 ## EP1.6
 
