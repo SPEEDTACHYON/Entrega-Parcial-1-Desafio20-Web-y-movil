@@ -1,6 +1,12 @@
 # Entrega-Parcial-1-Desafio20-Web-y-movil
 En el siguiente repositorio de github se muestra el directorio readme.md con todas las especificaciones técnicas, los diagramas de flujo, los mockups,creación del proyecto en ionic y el diseño de pantallas tal como se requirió para la entrega parcial 1 
 
+# Integrantes
+
+**Joaquín Rojas, rol : Documentador de readme.md y pantallas de Figma (github: SPEEDTACHYON)
+Vicente Robles, rol : diseñador de los diagramas (github: vichoRobles)
+Alfredo Escobar, rol : programador de pantallas en Ionic-React(github: pancakes2)**
+
 ## EP1.1
 
 **SE REQUIERE :** Definición de al menos 7 requerimientos funcionales y al
