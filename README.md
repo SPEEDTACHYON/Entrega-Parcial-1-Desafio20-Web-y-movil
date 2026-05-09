@@ -3,9 +3,11 @@ En el siguiente repositorio de github se muestra el directorio readme.md con tod
 
 # Integrantes
 
-**Joaquín Rojas, rol : Documentador de readme.md y pantallas de Figma (github: SPEEDTACHYON)
-Vicente Robles, rol : diseñador de los diagramas (github: vichoRobles)
-Alfredo Escobar, rol : programador de pantallas en Ionic-React(github: pancakes2)**
+**Joaquín Rojas, rol : Documentador de readme.md y pantallas de Figma (github: SPEEDTACHYON)**
+
+**Vicente Robles, rol : diseñador de los diagramas (github: vichoRobles)**
+
+**Alfredo Escobar, rol : programador de pantallas en Ionic-React(github: pancakes2)**
 
 ## EP1.1
 
@@ -223,7 +225,7 @@ previamente definida en ionic-react (al menos 4). Uso de componentes propios de 
 Tabs, IonMenu, etc). Separación estructural del código en carpetas
 (pages, components, routes, services):
 
-**Para ello, vamos a rescatar las mejores 4 pantallas/mockup hechas en figma, vamos a mejorarlas y vamos a programarlas y formatearlas adecuadamente con el uso de Ionic-React en Figma**
+**Para ello, vamos a rescatar las mejores 4 pantallas/mockup hechas en figma, vamos a mejorarlas y vamos a programarlas y formatearlas adecuadamente con el uso de Ionic-React en Figma para luego ser programadas en Ionic-React por el programador**
 
 **Pantalla 1 mejorada en Ionic-React :**
 
