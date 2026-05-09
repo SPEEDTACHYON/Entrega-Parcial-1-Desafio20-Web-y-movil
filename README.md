@@ -309,7 +309,9 @@ https://www.figma.com/make/39XjHSHB4gaiOrYpM81hSr/Login-form-redesign?t=shKLnrYb
 
 Mejora de pantalla 3 de Figma
 
-https://www.figma.com/make/fOSettPhdhVn0tbhoYIRss/Ciudadana-Experience-Form?t=Su82dOs9Bv3x1frr-1
+https://www.figma.com/make/1MpwK8OKBUSpeFVQDzzVc3/Dashboard-with-Interactive-Map?t=2LPp4ppkcWkFh9Kj-1
+
+**Aquí en Ionic-React solo faltariá añadir un botón debajo del filtro que lleve al seguimiento de opiniones**
 
 **Pantalla 6 mejorada en Ionic-React :**
 
