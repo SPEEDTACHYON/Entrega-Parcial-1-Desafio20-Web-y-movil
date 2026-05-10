@@ -197,7 +197,8 @@ Para este mapa de navegación se utilizó el color azul para las rutas principal
 - Carga multimedia: El flujo puede fallar al momento de subir la foto debido al peso de estas o a la latencia de red 
 
 ### Taskflow Exportar análisis detallado JSON
-<img width="4132" height="868" alt="Taskflow 2@2x (3)" src="https://github.com/user-attachments/assets/ef36bc73-b655-466d-8104-2191df9312cb" />
+<img width="4180" height="868" alt="Taskflow 2@2x (5)" src="https://github.com/user-attachments/assets/d0b522bf-4342-4d4f-82f4-fccc8c00e799" />
+
 
 
 **Puntos críticos**
