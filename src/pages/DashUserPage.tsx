@@ -235,9 +235,13 @@ export default function Index() {
             </div>
 
             <div className="px-4 py-4 mt-auto">
-              <IonButton fill="clear" size="small" expand="block">
+              <IonRouterLink
+                routerLink="/opinions"
+                routerDirection="forward"
+                className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+              >
                 Seguimiento de Opiniones
-              </IonButton>
+              </IonRouterLink>
             </div>
 
             <div className="px-4 pb-4 border-t border-gray-200 pt-4 lg:hidden">
@@ -305,9 +309,14 @@ export default function Index() {
                     <IonBadge color={selectedProject.status === "active" ? "success" : selectedProject.status === "pending" ? "warning" : "primary"}>
                       {STATUS_LABELS[selectedProject.status]}
                     </IonBadge>
-                    <IonButton fill="clear" size="small" onClick={() => focusProject(selectedProject)}>
+                    <IonRouterLink
+                      routerLink="/detalles"
+                      routerDirection="forward"
+                      className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                      onClick={() => focusProject(selectedProject)}
+                    >
                       Detalles Proyecto
-                    </IonButton>
+                    </IonRouterLink>
                   </div>
                 </IonCardContent>
               </IonCard>
