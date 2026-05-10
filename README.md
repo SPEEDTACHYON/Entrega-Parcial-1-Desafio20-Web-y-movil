@@ -168,7 +168,8 @@ puntos críticos de interacción; (g) coherencia de experiencia entre dispositiv
 estructural y escalabilidad de la arquitectura frontend:
 
 ### Mapa de navegacion
-<img width="5177" height="2886" alt="Mapa de navegacion@2x" src="https://github.com/user-attachments/assets/c4ec87c2-6aad-4b87-ac63-be21ac3da50b" />
+<img width="5120" height="2799" alt="Mapa de navegacion@2x (2)" src="https://github.com/user-attachments/assets/91736b26-5112-4b41-a405-6e591c13129d" />
+
 Para este mapa de navegación se utilizó el color azul para las rutas principales y naranjo para las rutas secundarias
 
 **Rutas principales:**
@@ -181,13 +182,14 @@ Para este mapa de navegación se utilizó el color azul para las rutas principal
 
 - Detalle proyecto
 - Formulario de opinión
-- Seguimiento de opiniones
 - Gestión de proyectos
+- Tabla detallada
 
 
 
 ### Taskflow Entregar opinión
-<img width="6845" height="1163" alt="Taskflow 1@2x" src="https://github.com/user-attachments/assets/5409b48c-af78-455a-9d81-02b6d9c65ba1" />
+<img width="6845" height="1163" alt="Taskflow 1@2x (1)" src="https://github.com/user-attachments/assets/221a3ac5-811a-4a55-be4e-e8d51340b41d" />
+
 
 **Puntos críticos**
 
@@ -195,7 +197,8 @@ Para este mapa de navegación se utilizó el color azul para las rutas principal
 - Carga multimedia: El flujo puede fallar al momento de subir la foto debido al peso de estas o a la latencia de red 
 
 ### Taskflow Exportar análisis detallado JSON
-<img width="4660" height="868" alt="Taskflow 2@2x (2)" src="https://github.com/user-attachments/assets/46f4a3cb-e5c8-4024-8e58-c10c6daed73b" />
+<img width="4132" height="868" alt="Taskflow 2@2x (3)" src="https://github.com/user-attachments/assets/ef36bc73-b655-466d-8104-2191df9312cb" />
+
 
 **Puntos críticos**
 
@@ -206,7 +209,7 @@ Para este mapa de navegación se utilizó el color azul para las rutas principal
 Para poder garantizar la adaptabilidad del sistema a distintos tipos de dispositivos se hará uso de componentes ION- tabs para una navegación en moviles y ION- menu para la versión web
 
 ### Justificación de técnicas adoptadas
-Una de las principales técnicas adoptadas fue la separación de roles para las personas que sean administradores y para las que sean usuarios, de modo que dependiendo del caso, solo se les muestre la información necesaria para cada uno de ellos, de esta forma evitando una sobrecarga de información a través de una separación jerárquica. También para poder garantizar la escalabilidad del proyecto, se hace uso de una estructura modular con carpetas para que la arquitectura crezca sin afectar la mantenibilidad del codigo. Finalmente para que la aplicación sea lo más eficiente posible y tenga una alta usabilidad se optó por taskflow simple y directo a la hora de realizar acciones, como por ejemplo el de entregar una opinión a un proyecto.
+Una de las principales técnicas adoptadas fue la separación de roles para las personas que sean administradores y para las que sean usuarios, de modo que dependiendo del caso, solo se les muestre la información necesaria para cada uno de ellos, de esta forma evitando una sobrecarga de información a través de una separación jerárquica. También para poder garantizar la escalabilidad del proyecto, se hace uso de una estructura modular con carpetas para que la arquitectura crezca sin afectar la mantenibilidad del código. Finalmente para que la aplicación sea lo más eficiente posible y tenga una alta usabilidad se optó por taskflow simple y directo a la hora de realizar acciones, como por ejemplo el de entregar una opinión a un proyecto.
 
 ## EP1.5
 
