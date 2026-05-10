@@ -15,6 +15,8 @@ import RegisterPage from './pages/RegisterPage';
 import OpinionsPage from './pages/OpinionsPage';
 import DashAdminPage from './pages/DashAdminPage';
 import DashUserPage from './pages/DashUserPage';
+import FormPage from './pages/FormPage';
+import DetallesPage from './pages/DetallesPage';
 
 setupIonicReact();
 
@@ -25,7 +27,6 @@ const App: React.FC = () => (
         {/* Public Route */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/opinions" element={<OpinionsPage />} />
         {/* Protected Route */}
         <Route
           path="/dashboard"
@@ -40,6 +41,30 @@ const App: React.FC = () => (
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <DashAdminPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/detalles"
+          element={
+            <ProtectedRoute allowedRoles={['user', 'admin']}>
+              <DetallesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/opinions"
+          element={
+            <ProtectedRoute allowedRoles={['user', 'admin']}>
+              <OpinionsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/form"
+          element={
+            <ProtectedRoute allowedRoles={['user', 'admin']}>
+              <FormPage />
             </ProtectedRoute>
           }
         />
