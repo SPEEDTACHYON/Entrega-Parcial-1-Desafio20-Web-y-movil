@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   IonBadge,
   IonButton,
@@ -9,6 +8,7 @@ import {
   IonCardContent,
   IonItem,
   IonLabel,
+  IonRouterLink,
   IonPage,
 } from "@ionic/react";
 import L from "leaflet";
@@ -100,7 +100,6 @@ function createRedMarkerIcon() {
 }
 
 export default function Index() {
-  const navigate = useNavigate();
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const markersRef = useRef<L.Marker[]>([]);
@@ -186,15 +185,13 @@ export default function Index() {
         <div className="flex h-screen w-screen overflow-hidden">
           <aside className="w-64 flex-shrink-0 flex flex-col border-r border-gray-200 bg-white overflow-y-auto">
             <div className="px-4 pt-4">
-              <IonButton
-                fill="outline"
-                size="small"
-                color="medium"
-                onClick={() => navigate("/login")}
-                className="ion-no-margin"
+              <IonRouterLink
+                routerLink="/login"
+                routerDirection="back"
+                className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
               >
                 Volver
-              </IonButton>
+              </IonRouterLink>
             </div>
 
             <div className="flex items-center gap-2 px-4 pt-4 pb-4">

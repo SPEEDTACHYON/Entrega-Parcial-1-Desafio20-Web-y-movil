@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { IonContent, IonPage } from '@ionic/react';
-import { Link } from 'react-router-dom';
+import { IonContent, IonPage, IonRouterLink } from '@ionic/react';
 
 const REGIONES_CHILE = [
   "Región de Arica y Parinacota",
@@ -84,12 +83,12 @@ export default function Index() {
       <IonContent fullscreen>
         <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#667EEA] to-[#764BA2] py-10 px-4">
           <div className="w-full max-w-[500px] bg-white rounded-xl shadow-2xl p-8 flex flex-col gap-6 relative">
-            <Link to="/login" className="absolute left-4 top-4 text-[#667EEA] hover:text-[#5a6fd6] flex items-center gap-2">
+            <IonRouterLink routerLink="/login" routerDirection="back" className="absolute left-4 top-4 text-[#667EEA] hover:text-[#5a6fd6] flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path d="M15 6L9 12L15 18" stroke="#667EEA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <span className="text-sm font-medium">Volver</span>
-            </Link>
+            </IonRouterLink>
             {/* Title */}
             <h1
               className="text-center text-[34px] font-semibold leading-tight tracking-[0.25px] text-[#667EEA]"

@@ -1,6 +1,5 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage, IonRouterLink } from '@ionic/react';
 import { useState } from "react";
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth, type UserRole } from '../utils/AuthContext';
 
@@ -156,11 +155,15 @@ export default function Index() {
                 <p className="text-base font-normal text-[#4A5565] leading-6 text-center">
                   ¿No tienes una cuenta?
                 </p>
-                <Link
-                  to="/register"
+                <IonRouterLink
+                  routerLink="/register"
+                  routerDirection="forward"
                   className="w-[145px] h-[52px] rounded-[10px] border-2 border-[#AD46FF] text-base font-normal text-[#9810FA] leading-6 hover:bg-[#AD46FF]/5 transition-colors inline-flex items-center justify-center">
                   Registrarse
-                </Link>
+                </IonRouterLink>
+
+                
+
               </div>
             </div>
 
