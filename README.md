@@ -219,15 +219,11 @@ A continuación se darán las especificaciones técnicas para el programador :
 
 ## (a) Uso de React Router
 
-React Router constituye la base de la navegación dentro de la SPA (Single Page Application).
-
-**Especificación:**
-
-Se recomienda utilizar la versión más reciente de React Router (v6 o superior).
+React Router constituye la base de la navegación dentro de la SPA (Single Page Application) y es basado en los roles de los usuarios para tener rutas protegidas y públicas, tales como las de los usuarios y admins para las protegidas y el login y registro para las públicas.
 
 **Implementación:**
 
-La aplicación debe contar con un componente central llamado AppRouter.jsx, encargado de envolver toda la aplicación mediante <BrowserRouter>. Además, toda navegación interna debe realizarse utilizando el componente <Link> o el hook useNavigate, evitando así recargas completas de la página (F5) y mejorando la experiencia del usuario.
+La aplicación cuenta con un componente central llamado App.tsx, encargado de envolver toda la aplicación mediante <BrowserRouter>. Además, toda la navegación interna es realizada utilizando el componente <IonRouterLink> para soportar ciertas funcionalidades de Ionic de ser necesarias, siendo este un reemplazo para el componente <Link> usualmente utilizado para aquello, con esto evitamos así las recargas completas de la página (F5) y mejoramos la experiencia del usuario.
 
 
 ## (b) Rutas Públicas y Rutas Protegidas
@@ -236,19 +232,19 @@ El sistema debe diferenciar claramente las vistas accesibles para cualquier usua
 
 **Rutas Públicas:**
 Son accesibles para todos los usuarios, por ejemplo:
-- Landing Page
 - Login
 - Registro
 
 **Rutas Protegidas:**
 Solo pueden ser utilizadas cuando existe una sesión activa o un token válido, por ejemplo:
-- Dashboard
-- Formulario de Experiencia
+- Dashboard del usuario (Mapa interactivo)
+- Formulario de experiencia
+- Registro de opiniones del usuario
+- Detalles de los proyectos
 - Panel de Administración
 
 **Componente Wrapper:**
 Se debe implementar un componente de orden superior (HOC) llamado ProtectedRoute, cuya función será validar el estado del usuario antes de permitir el acceso a una vista protegida.
-
 
 ## (c) Redirecciones (Login Obligatorio)
 
@@ -261,7 +257,6 @@ Si un usuario intenta acceder manualmente a una ruta restringida, como /admin, s
 **Redirección hacia Home o Dashboard:**
 
 Si un usuario ya autenticado intenta acceder nuevamente a /login, deberá ser redirigido automáticamente a su Dashboard para evitar conflictos o duplicidad de sesión.
-
 
 ## (d) Estructura Modular de Vistas
 
@@ -277,9 +272,15 @@ Contendrá las vistas principales del sistema, correspondientes a las siete pant
 **- /src/components:**
 Contendrá componentes reutilizables y de menor tamaño, como botones, campos de entrada (inputs), barras de navegación, entre otros.
 
+**- /src/utils:**
+Contendrá todas las funciones auxiliares, como validaciones, formateadores de datos, y cualquier lógica que no esté directamente relacionada con la presentación.
+
+**- /src/assets:**
+Contendrá imágenes, íconos y cualquier recurso estático utilizado en la aplicación.
+
 **Un archivo por vista:**
 
-Cada pantalla principal debe contar con su propio archivo .jsx independiente, importando únicamente los componentes necesarios para mantener el código ordenado, reutilizable y fácil de mantener.
+Cada pantalla principal cuenta con su propio archivo .jsx independiente, importando únicamente los componentes necesarios para mantener el código ordenado, reutilizable y fácil de mantener.
 
 
 ## EP1.6
