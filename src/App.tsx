@@ -31,7 +31,7 @@ const App: React.FC = () => (
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute allowedRoles={['user']}>
+            <ProtectedRoute allowedRoles={['user', 'admin']}>
               <DashUserPage />
             </ProtectedRoute>
           }

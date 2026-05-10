@@ -7,6 +7,7 @@ import {
   IonContent,
   IonButtons,
   IonMenuButton,
+  IonRouterLink
 } from '@ionic/react';
 
 interface Opinion {
@@ -283,6 +284,18 @@ export default function OpinionsPage() {
         {/* Header en Ionic: Reemplaza tu etiqueta <header> */}
         <IonHeader className="ion-no-border">
           <IonToolbar className="bg-[#0054E9] border-b border-black/20" style={{ '--background': '#0054E9', '--color': 'white' }}>
+          {/* --- BOTÓN VOLVER --- */}
+              <IonRouterLink 
+                routerLink="/dashboard" 
+                routerDirection="back" 
+                className="flex items-center gap-1 text-white hover:text-gray-200 px-2 transition-colors"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path d="M15 6L9 12L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="text-sm font-medium">Volver</span>
+              </IonRouterLink>
+              {/* --------------------------------- */}
             {/* Botón para abrir el IonMenu */}
             <IonButtons slot="start">
               <IonMenuButton color="light" />
