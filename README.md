@@ -1,6 +1,14 @@
 # Entrega-Parcial-1-Desafio20-Web-y-movil
 En el siguiente repositorio de github se muestra el directorio readme.md con todas las especificaciones técnicas, los diagramas de flujo, los mockups,creación del proyecto en ionic y el diseño de pantallas tal como se requirió para la entrega parcial 1 
 
+# Integrantes
+
+**Joaquín Rojas, rol : Documentador de readme.md y pantallas de Figma (github: SPEEDTACHYON)**
+
+**Vicente Robles, rol : Diseñador de los diagramas (github: vichoRobles)**
+
+**Alfredo Escobar, rol : Programador de pantallas en Ionic-React (github: pancakes2)**
+
 ## EP1.1
 
 **SE REQUIERE :** Definición de al menos 7 requerimientos funcionales y al
@@ -89,8 +97,6 @@ UX: Validación visual en tiempo real, por ejemplo, borde verde cuando el RUT es
 https://www.figma.com/make/LW8dK6owJ8XT9LZLT51Niz/User-Registration-Screen?t=2LPp4ppkcWkFh9Kj-1
 
 
-
-
 **Pantalla 2: Inicio de sesión**
 
 Campos: Correo electrónico o RUT, y contraseña.
@@ -145,7 +151,7 @@ https://www.figma.com/make/21hvoNznzCHCVZByX96e8t/Opinion-Tracking-Screen?t=shKL
 
 **Pantalla 7: Panel de Administración + Análisis con IA integrada (RF5)**
 
-Contenido: Vista exclusiva para administradores. Incluye gráficos (de barras o torta) que muestran el sentimiento general y nubes de palabras clave generadas por IA.
+Contenido: Vista exclusiva para administradores. Incluye gráficos (de barras o torta) que muestran el sentimiento general y submenú para gestión de proyectos : añadir o actualizar estado de proyectos.
 Web: Tabla detallada con opción de exportar datos en formato JSON (RF6).
 
 **Pantalla 7 en figma :**
@@ -209,6 +215,72 @@ Una de las principales técnicas adoptadas fue la separación de roles para las 
 Redirecciones (ejemplo: login obligatorio); (d) Estructura modular
 de vistas:
 
+A continuación se darán las especificaciones técnicas para el programador :
+
+## (a) Uso de React Router
+
+React Router constituye la base de la navegación dentro de la SPA (Single Page Application).
+
+**Especificación:**
+
+Se recomienda utilizar la versión más reciente de React Router (v6 o superior).
+
+**Implementación:**
+
+La aplicación debe contar con un componente central llamado AppRouter.jsx, encargado de envolver toda la aplicación mediante <BrowserRouter>. Además, toda navegación interna debe realizarse utilizando el componente <Link> o el hook useNavigate, evitando así recargas completas de la página (F5) y mejorando la experiencia del usuario.
+
+
+## (b) Rutas Públicas y Rutas Protegidas
+
+El sistema debe diferenciar claramente las vistas accesibles para cualquier usuario y aquellas restringidas según el estado de autenticación.
+
+**Rutas Públicas:**
+Son accesibles para todos los usuarios, por ejemplo:
+- Landing Page
+- Login
+- Registro
+
+**Rutas Protegidas:**
+Solo pueden ser utilizadas cuando existe una sesión activa o un token válido, por ejemplo:
+- Dashboard
+- Formulario de Experiencia
+- Panel de Administración
+
+**Componente Wrapper:**
+Se debe implementar un componente de orden superior (HOC) llamado ProtectedRoute, cuya función será validar el estado del usuario antes de permitir el acceso a una vista protegida.
+
+
+## (c) Redirecciones (Login Obligatorio)
+
+El sistema debe gestionar automáticamente el flujo de navegación cuando un usuario no cuenta con los permisos necesarios.
+
+**Redirección hacia Login:**
+
+Si un usuario intenta acceder manualmente a una ruta restringida, como /admin, sin haber iniciado sesión, el sistema deberá redireccionarlo automáticamente a /login utilizando el componente <Navigate to="/login" />.
+
+**Redirección hacia Home o Dashboard:**
+
+Si un usuario ya autenticado intenta acceder nuevamente a /login, deberá ser redirigido automáticamente a su Dashboard para evitar conflictos o duplicidad de sesión.
+
+
+## (d) Estructura Modular de Vistas
+
+La organización del proyecto debe seguir una estructura modular que facilite la escalabilidad y el mantenimiento del sistema.
+
+**División de carpetas:**
+
+Se recomienda separar claramente los componentes reutilizables de las páginas completas.
+
+**- /src/pages:**
+Contendrá las vistas principales del sistema, correspondientes a las siete pantallas definidas anteriormente.
+
+**- /src/components:**
+Contendrá componentes reutilizables y de menor tamaño, como botones, campos de entrada (inputs), barras de navegación, entre otros.
+
+**Un archivo por vista:**
+
+Cada pantalla principal debe contar con su propio archivo .jsx independiente, importando únicamente los componentes necesarios para mantener el código ordenado, reutilizable y fácil de mantener.
+
 
 ## EP1.6
 
@@ -217,7 +289,7 @@ previamente definida en ionic-react (al menos 4). Uso de componentes propios de 
 Tabs, IonMenu, etc). Separación estructural del código en carpetas
 (pages, components, routes, services):
 
-**Para ello, vamos a rescatar las mejores 4 pantallas/mockup hechas en figma, vamos a mejorarlas y vamos a programarlas y formatearlas adecuadamente con el uso de Ionic-React en Figma**
+**Para ello, vamos a rescatar las mejores 4 pantallas/mockup hechas en figma, vamos a mejorarlas y vamos a programarlas y formatearlas adecuadamente con el uso de Ionic-React en Figma para luego ser programadas en Ionic-React por el programador**
 
 **Pantalla 1 mejorada en Ionic-React :**
 
@@ -233,11 +305,13 @@ https://www.figma.com/make/39XjHSHB4gaiOrYpM81hSr/Login-form-redesign?t=shKLnrYb
 
 **Pantalla 3 mejorada en Ionic-React :**
 
-Mejora de pantalla 5 de Figma
+Mejora de pantalla 3 de Figma
 
-https://www.figma.com/make/fOSettPhdhVn0tbhoYIRss/Ciudadana-Experience-Form?t=Su82dOs9Bv3x1frr-1
+https://www.figma.com/make/1MpwK8OKBUSpeFVQDzzVc3/Dashboard-with-Interactive-Map?t=2LPp4ppkcWkFh9Kj-1
 
-**Pantalla 4 mejorada en Ionic-React :**
+**Aquí en Ionic-React solo faltariá añadir un botón debajo del filtro que lleve al seguimiento de opiniones**
+
+**Pantalla 6 mejorada en Ionic-React :**
 
 Mejora de pantalla 6 de Figma
 
