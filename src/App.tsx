@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { IonApp, setupIonicReact } from '@ionic/react';
+import { setupIonicReact } from '@ionic/react';
 import { AuthProvider } from './utils/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -12,34 +12,43 @@ import '@ionic/react/css/typography.css';
 /* Pages */
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/DashboardPage';
+import OpinionsPage from './pages/OpinionsPage';
+import DashAdminPage from './pages/DashAdminPage';
+import DashUserPage from './pages/DashUserPage';
 
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Public Route */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          {/* Protected Route */}
-          <Route 
-            path="/dashboard" 
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            } 
-          />
+  <AuthProvider>
+    <BrowserRouter>
+      <Routes>
+        {/* Public Route */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/opinions" element={<OpinionsPage />} />
+        {/* Protected Route */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['user']}>
+              <DashUserPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <DashAdminPage />
+            </ProtectedRoute>
+          }
+        />
 
-          {/* Default Redirect (Catch-all) */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
-  </IonApp>
+        {/* Default Redirect (Catch-all) */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
+  </AuthProvider>
 );
 
 export default App;
