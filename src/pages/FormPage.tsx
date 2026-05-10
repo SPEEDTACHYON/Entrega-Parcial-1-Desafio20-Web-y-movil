@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { IonPage, IonContent, IonButton } from "@ionic/react";
+import { IonPage, IonContent, IonButton, IonRouterLink } from "@ionic/react";
 
 const emotions = [
   { emoji: "😠", label: "Enojo" },
@@ -32,6 +32,18 @@ export default function Index() {
             <div className="bg-white rounded-2xl shadow-lg shadow-black/10 overflow-hidden">
               <div className="px-8 pt-8 pb-8 flex flex-col gap-8">
                 {/* Header */}
+                {/* --- BOTÓN VOLVER --- */}
+                  <IonRouterLink
+                    routerLink="/detalles" 
+                    routerDirection="back"
+                    className="self-start flex items-center gap-1 text-[#4A5565] hover:text-[#2B7FFF] transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+                      <path d="M15 6L9 12L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="text-sm font-medium">Volver</span>
+                  </IonRouterLink>
+                  {/* -------------------- */}
                 <div>
                   <h1 className="text-[30px] font-medium leading-9 text-[#0A0A0A]">
                     Comparte tu Experiencia
@@ -222,9 +234,17 @@ export default function Index() {
                   </div>
 
                   {/* Submit */}
-                  <IonButton type="submit" expand="block" className="py-[15px] rounded-[14px] bg-[#2B7FFF] hover:bg-[#1a6ef0] active:bg-[#1560d4] transition-colors text-white text-lg font-medium leading-7">
+                  <button 
+                    type="submit" 
+                     
+                    className={`w-full py-[15px] rounded-[14px] shadow-md transition-colors text-white text-lg font-medium leading-7 ${
+                      submitted 
+                        ? "bg-[#00C950] hover:bg-[#00B046] active:bg-[#00963C]" 
+                        : "bg-[#2B7FFF] hover:bg-[#1a6ef0] active:bg-[#1560d4]"
+                    }`}
+                  >
                     {submitted ? "¡Enviado!" : "Enviar Experiencia"}
-                  </IonButton>
+                  </button>
 
                 </form>
               </div>

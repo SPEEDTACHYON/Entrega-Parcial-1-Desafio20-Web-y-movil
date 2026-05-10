@@ -45,7 +45,21 @@ export default function Index() {
       */}
 
       {/* Main Content */}
-      <div className="max-w-[1152px] mx-auto px-4 sm:px-8 lg:px-16 pb-12 flex flex-col gap-8">
+      <div className="max-w-[1152px] mx-auto px-4 sm:px-8 lg:px-16 pt-12 pb-12 flex flex-col gap-8">
+        {/* --- BOTÓN VOLVER --- */}
+        <div>
+          <IonRouterLink
+            routerLink="/dashboard" 
+            routerDirection="back"
+            className="inline-flex items-center gap-2 text-[#4A5565] hover:text-[#155DFC] transition-colors"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M15 6L9 12L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="text-sm font-medium">Volver</span>
+          </IonRouterLink>
+        </div>
+        {/* -------------------- */}
         {/* Page Header */}
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl sm:text-[36px] font-bold leading-tight sm:leading-[40px] text-[#101828]">
