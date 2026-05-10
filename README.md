@@ -206,9 +206,6 @@ Para este mapa de navegación se utilizó el color azul para las rutas principal
 - Exportar análisis: Si existen muchas opiniones el exportarlas puede tardar
 - Exportar sin opiniones: Si aun no existen opiniones sobre un proyecto, al exportar va a entregar un archivo vacio
 
-### Coherencia de experiencia entre dispositivos
-Para poder garantizar la adaptabilidad del sistema a distintos tipos de dispositivos se hará uso de componentes ION- tabs para una navegación en moviles y ION- menu para la versión web
-
 ### Justificación de técnicas adoptadas
 Una de las principales técnicas adoptadas fue la separación de roles para las personas que sean administradores y para las que sean usuarios, de modo que dependiendo del caso, solo se les muestre la información necesaria para cada uno de ellos, de esta forma evitando una sobrecarga de información a través de una separación jerárquica. También para poder garantizar la escalabilidad del proyecto, se hace uso de una estructura modular con carpetas para que la arquitectura crezca sin afectar la mantenibilidad del código. Finalmente para que la aplicación sea lo más eficiente posible y tenga una alta usabilidad se optó por taskflow simple y directo a la hora de realizar acciones, como por ejemplo el de entregar una opinión a un proyecto.
 
