@@ -19,8 +19,12 @@ const AuthContext = createContext<AuthContextValue>({
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [role, setRole] = useState<UserRole>('user');
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+  const [role, setRole] = useState<UserRole>('admin'); // or 'user'
+
+  
+  //const [isAuthenticated, setIsAuthenticated] = useState(false);
+  //const [role, setRole] = useState<UserRole>('user');
 
   const login = (nextRole: UserRole = 'user') => {
     setRole(nextRole);
