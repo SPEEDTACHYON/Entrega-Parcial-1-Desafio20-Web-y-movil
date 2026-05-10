@@ -1,15 +1,36 @@
 import React, { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext({ isAuthenticated: false, login: () => {}, logout: () => {} });
+export type UserRole = 'user' | 'admin';
+
+type AuthContextValue = {
+  isAuthenticated: boolean;
+  role: UserRole;
+  login: (nextRole?: UserRole) => void;
+  logout: () => void;
+  setRole: (nextRole: UserRole) => void;
+};
+
+const AuthContext = createContext<AuthContextValue>({
+  isAuthenticated: false,
+  role: 'user',
+  login: () => {},
+  logout: () => {},
+  setRole: () => {},
+});
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [role, setRole] = useState<UserRole>('user');
 
-  const login = () => setIsAuthenticated(true);
+  const login = (nextRole: UserRole = 'user') => {
+    setRole(nextRole);
+    setIsAuthenticated(true);
+  };
+
   const logout = () => setIsAuthenticated(false);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, role, login, logout, setRole }}>
       {children}
     </AuthContext.Provider>
   );

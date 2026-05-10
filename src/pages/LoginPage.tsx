@@ -1,9 +1,21 @@
 import { IonContent, IonPage } from '@ionic/react';
 import { useState } from "react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth, type UserRole } from '../utils/AuthContext';
 
 export default function Index() {
   const [showPassword, setShowPassword] = useState(false);
+
+  // TODO: Eliminar la selección entre admin y user, temporal hasta que se implemente el backend en el siguiente entregable
+  const [selectedRole, setSelectedRole] = useState<UserRole>('user');
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const handleLogin = () => {
+    login(selectedRole);
+    navigate(selectedRole === 'admin' ? '/admin' : '/dashboard', { replace: true });
+  };
 
   return (
     <IonPage>
@@ -91,10 +103,40 @@ export default function Index() {
                     ¿Olvidé mi contraseña?
                   </a>
                 </div>
+                
+                {/* TODO: Eliminar la selección entre admin y user, temporal hasta que se implemente el backend en el siguiente entregable */}
+                <div className="flex flex-col gap-2">
+                  <span className="text-base font-medium text-[#364153] leading-6">Entrar como</span>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedRole('user')}
+                      className={`h-[44px] rounded-[10px] border text-sm font-medium transition-colors ${
+                        selectedRole === 'user'
+                          ? 'border-[#155DFC] bg-[#EFF6FF] text-[#155DFC]'
+                          : 'border-[#E5E7EB] text-[#4A5565] hover:border-[#155DFC]'
+                      }`}
+                    >
+                      Usuario
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedRole('admin')}
+                      className={`h-[44px] rounded-[10px] border text-sm font-medium transition-colors ${
+                        selectedRole === 'admin'
+                          ? 'border-[#9810FA] bg-[#FAF5FF] text-[#9810FA]'
+                          : 'border-[#E5E7EB] text-[#4A5565] hover:border-[#9810FA]'
+                      }`}
+                    >
+                      Admin
+                    </button>
+                  </div>
+                </div>
 
                 {/* Submit button */}
                 <button
                   type="button"
+                  onClick={handleLogin}
                   className="w-full h-[48px] rounded-[10px] text-base font-medium text-white leading-6 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.10),0_4px_6px_-4px_rgba(0,0,0,0.10)] hover:opacity-90 transition-opacity"
                   style={{ background: "linear-gradient(90deg, #2B7FFF 0%, #9810FA 100%)" }}
                 >
