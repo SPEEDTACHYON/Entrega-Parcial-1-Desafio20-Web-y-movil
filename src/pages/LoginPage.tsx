@@ -1,5 +1,5 @@
 import { IonContent, IonPage, IonRouterLink } from '@ionic/react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useAuth, type UserRole } from '../utils/AuthContext';
 
@@ -10,6 +10,17 @@ export default function Index() {
   const [selectedRole, setSelectedRole] = useState<UserRole>('user');
   const navigate = useNavigate();
   const { login } = useAuth();
+
+  // --->  LÓGICA DEL BACKEND PRUEBA<---
+  const [mensajeBackend, setMensajeBackend] = useState<string>("Cargando conexión...");
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/estado')
+      .then(respuesta => respuesta.json())
+      .then(datos => setMensajeBackend(datos.mensaje))
+      .catch(error => setMensajeBackend("Backend desconectado 🔴"));
+  }, []);
+  // --------------------------------------
 
   const handleLogin = () => {
     login(selectedRole);
@@ -39,6 +50,17 @@ export default function Index() {
                 <p className="text-base font-normal text-[#4A5565] text-center leading-6">
                   Inicia sesión en tu cuenta
                 </p>
+
+                {/* ---> PRUEBA: RECUADRO VISUAL DEL BACKEND <--- */}
+                <div className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-50 px-4 py-2 border border-blue-200">
+                  <div className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></div>
+                  <span className="text-xs font-medium text-blue-700 text-center">
+                    Estado: {mensajeBackend}
+                  </span>
+                </div>
+                {/* ----------------------------------------------- */}
+
+
               </div>
 
               {/* Form */}
