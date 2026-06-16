@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { IonPage, IonContent, IonButton, IonRouterLink } from "@ionic/react";
+import { IonPage, IonContent, IonRouterLink } from "@ionic/react";
 
 const emotions = [
   { emoji: "😠", label: "Enojo" },
@@ -26,127 +26,113 @@ export default function Index() {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
-        <div className="min-h-screen overflow-y-auto overflow-x-hidden flex items-center justify-center bg-gradient-to-br from-[#EFF6FF] to-[#E0E7FF] px-4 py-12">
-          <div className="w-full max-w-[672px]">
-            <div className="bg-white rounded-2xl shadow-lg shadow-black/10 overflow-hidden">
-              <div className="px-8 pt-8 pb-8 flex flex-col gap-8">
+      <IonContent fullscreen className="font-sans" style={{ '--background': '#F0F5F9' }}>
+        <div className="min-h-screen bg-[#F0F5F9] pb-12 relative">
+          
+          {/* Botón Volver*/}
+          <div className="absolute top-6 left-6">
+            <IonRouterLink
+              routerLink="/detalles" 
+              routerDirection="back"
+              className="flex flex-col items-center gap-0.5 text-[#0A58CA] hover:text-[#084298] transition-colors"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18L9 12L15 6" />
+              </svg>
+              <span className="text-[15px] font-medium">Volver</span>
+            </IonRouterLink>
+          </div>
+
+          <div className="max-w-[600px] mx-auto pt-20 px-4">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="px-8 py-10 flex flex-col gap-8">
+                
                 {/* Header */}
-                {/* --- BOTÓN VOLVER --- */}
-                  <IonRouterLink
-                    routerLink="/detalles" 
-                    routerDirection="back"
-                    className="self-start flex items-center gap-1 text-[#4A5565] hover:text-[#2B7FFF] transition-colors"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M15 6L9 12L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="text-sm font-medium">Volver</span>
-                  </IonRouterLink>
-                  {/* -------------------- */}
-                <div>
-                  <h1 className="text-[30px] font-medium leading-9 text-[#0A0A0A]">
+                <div className="text-center sm:text-left">
+                  <h1 className="text-[28px] font-medium text-[#0A58CA] m-0 leading-tight">
                     Comparte tu Experiencia
                   </h1>
-                  <p className="mt-1 text-base text-[#4A5565] leading-6">
+                  <p className="mt-2 text-[14px] text-[#555555]">
                     Tu opinión es importante para mejorar nuestra ciudad
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+                  
                   {/* Emotion selector */}
                   <div className="flex flex-col gap-4">
-                    <span className="text-lg font-medium text-[#0A0A0A] leading-7">
+                    <span className="text-[15px] font-medium text-[#333333]">
                       ¿Cómo te sientes?
                     </span>
                     <div className="grid grid-cols-3 gap-4">
                       {emotions.map(({ emoji, label }) => (
-                        <IonButton
+                        <button
+                          type="button"
                           key={label}
-                          fill="clear"
                           onClick={() =>
                             setSelectedEmotion(
                               selectedEmotion === label ? null : label
                             )
                           }
-                          className={[
-                            "flex flex-col items-center justify-center gap-2 py-6 rounded-[14px] border-2 transition-all cursor-pointer",
+                          className={`flex flex-col items-center justify-center gap-2 py-4 rounded-xl border transition-all cursor-pointer ${
                             selectedEmotion === label
-                              ? "border-[#2B7FFF] bg-[#EFF6FF]"
-                              : "border-[#E5E7EB] hover:border-[#2B7FFF]/50",
-                          ].join(" ")}
+                              ? "border-[#0A58CA] bg-[#F0F5F9] shadow-sm"
+                              : "border-gray-200 bg-white hover:border-gray-300"
+                          }`}
                         >
-                          <span className="text-5xl leading-none">{emoji}</span>
-                          <span className="text-sm font-medium text-[#0A0A0A] leading-5">
+                          <span className="text-4xl leading-none">{emoji}</span>
+                          <span className="text-[13px] font-medium text-[#333333]">
                             {label}
                           </span>
-                        </IonButton>
+                        </button>
                       ))}
                     </div>
                   </div>
 
                   {/* Description */}
-                  <div className="flex flex-col gap-2">
-                    <label className="text-lg font-medium text-[#0A0A0A] leading-7">
+                  <div className="flex flex-col gap-3">
+                    <label className="text-[15px] font-medium text-[#333333]">
                       Describe tu experiencia
                     </label>
                     <textarea
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="Cuéntanos qué pasó..."
-                      rows={6}
-                      className="w-full resize-none rounded-[14px] border-2 border-[#E5E7EB] px-4 py-3 text-base text-[#0A0A0A] placeholder-[#0A0A0A]/50 leading-6 outline-none focus:border-[#2B7FFF] transition-colors"
+                      rows={5}
+                      className="w-full resize-none rounded-xl border border-gray-200 px-4 py-3 text-[14px] text-gray-800 placeholder-gray-400 outline-none focus:border-[#0A58CA] focus:ring-1 focus:ring-[#0A58CA] transition-all shadow-sm"
                     />
-                    <span className="text-sm text-[#6A7282] leading-5">
+                    <span className="text-[12px] text-gray-400">
                       {description.length} caracteres
                     </span>
                   </div>
 
                   {/* Photo attachment */}
                   <div className="flex flex-col gap-3">
-                    <span className="text-lg font-medium text-[#0A0A0A] leading-7">
+                    <span className="text-[15px] font-medium text-[#333333]">
                       Adjunta una fotografía (opcional)
                     </span>
 
                     {photo ? (
-                      <div className="flex items-center gap-3 p-4 rounded-[14px] border-2 border-[#2B7FFF] bg-[#EFF6FF]">
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M14.5 4H9.5L7 7H4C3.46957 7 2.96086 7.21071 2.58579 7.58579C2.21071 7.96086 2 8.46957 2 9V18C2 18.5304 2.21071 19.0391 2.58579 19.4142C2.96086 19.7893 3.46957 20 4 20H20C20.5304 20 21.0391 19.7893 21.4142 19.4142C21.7893 19.0391 22 18.5304 22 18V9C22 8.46957 21.7893 7.96086 21.4142 7.58579C21.0391 7.21071 20.5304 7 20 7H17L14.5 4Z"
-                            stroke="#2B7FFF"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10C10.3431 10 9 11.3431 9 13C9 14.6569 10.3431 16 12 16Z"
-                            stroke="#2B7FFF"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
+                      <div className="flex items-center gap-3 p-4 rounded-xl border border-[#0A58CA] bg-[#F0F5F9]">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A58CA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                          <polyline points="21 15 16 10 5 21"></polyline>
                         </svg>
-                        <span className="flex-1 text-sm text-[#4A5565] truncate">
+                        <span className="flex-1 text-[14px] text-gray-700 truncate">
                           {photo.name}
                         </span>
-                        <IonButton
-                          fill="clear"
-                          size="small"
+                        <button
+                          type="button"
                           onClick={() => setPhoto(null)}
-                          className="text-[#6A7282] hover:text-[#0A0A0A] text-lg leading-none"
+                          className="text-gray-500 hover:text-gray-800 text-xl leading-none px-2"
                         >
                           ×
-                        </IonButton>
+                        </button>
                       </div>
                     ) : (
                       <div className="flex flex-col gap-3">
-                        {/* Take photo */}
+                        {/* Take photo (Simulated) */}
                         <input
                           ref={cameraInputRef}
                           type="file"
@@ -157,33 +143,19 @@ export default function Index() {
                             setPhoto(e.target.files?.[0] ?? null)
                           }
                         />
-                        <IonButton type="button" onClick={() => cameraInputRef.current?.click()} className="flex items-center justify-center gap-3 h-[92px] rounded-[14px] border-2 border-dashed border-[#D1D5DC] hover:border-[#2B7FFF]/50 transition-colors cursor-pointer">
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M14.5 4H9.5L7 7H4C3.46957 7 2.96086 7.21071 2.58579 7.58579C2.21071 7.96086 2 8.46957 2 9V18C2 18.5304 2.21071 19.0391 2.58579 19.4142C2.96086 19.7893 3.46957 20 4 20H20C20.5304 20 21.0391 19.7893 21.4142 19.4142C21.7893 19.0391 22 18.5304 22 18V9C22 8.46957 21.7893 7.96086 21.4142 7.58579C21.0391 7.21071 20.5304 7 20 7H17L14.5 4Z"
-                              stroke="#99A1AF"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10C10.3431 10 9 11.3431 9 13C9 14.6569 10.3431 16 12 16Z"
-                              stroke="#99A1AF"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
+                        <button 
+                          type="button" 
+                          onClick={() => cameraInputRef.current?.click()} 
+                          className="flex items-center justify-center gap-2 h-14 rounded-xl border border-dashed border-gray-300 bg-white hover:bg-gray-50 transition-colors cursor-pointer w-full"
+                        >
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
                           </svg>
-                          <span className="text-base font-medium text-[#4A5565] leading-6">
+                          <span className="text-[14px] font-medium text-[#555555]">
                             Tomar foto
                           </span>
-                        </IonButton>
+                        </button>
 
                         {/* Select from gallery */}
                         <input
@@ -195,56 +167,37 @@ export default function Index() {
                             setPhoto(e.target.files?.[0] ?? null)
                           }
                         />
-                        <IonButton type="button" onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-3 h-[92px] rounded-[14px] border-2 border-dashed border-[#D1D5DC] hover:border-[#2B7FFF]/50 transition-colors cursor-pointer">
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
-                              stroke="#99A1AF"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M17 8L12 3L7 8"
-                              stroke="#99A1AF"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M12 3V15"
-                              stroke="#99A1AF"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
+                        <button 
+                          type="button" 
+                          onClick={() => fileInputRef.current?.click()} 
+                          className="flex items-center justify-center gap-2 h-14 rounded-xl border border-dashed border-gray-300 bg-white hover:bg-gray-50 transition-colors cursor-pointer w-full"
+                        >
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
                           </svg>
-                          <span className="text-base font-medium text-[#4A5565] leading-6">
+                          <span className="text-[14px] font-medium text-[#555555]">
                             Seleccionar desde galería
                           </span>
-                        </IonButton>
+                        </button>
                       </div>
                     )}
                   </div>
 
-                  {/* Submit */}
-                  <button 
-                    type="submit" 
-                     
-                    className={`w-full py-[15px] rounded-[14px] shadow-md transition-colors text-white text-lg font-medium leading-7 ${
-                      submitted 
-                        ? "bg-[#00C950] hover:bg-[#00B046] active:bg-[#00963C]" 
-                        : "bg-[#2B7FFF] hover:bg-[#1a6ef0] active:bg-[#1560d4]"
-                    }`}
-                  >
-                    {submitted ? "¡Enviado!" : "Enviar Experiencia"}
-                  </button>
+                  {/* Submit Button */}
+                  <div className="mt-2">
+                    <button 
+                      type="submit" 
+                      className={`w-full py-3.5 rounded-xl transition-colors text-white text-[16px] font-medium shadow-sm ${
+                        submitted 
+                          ? "bg-[#188038] hover:bg-[#146c2f]" 
+                          : "bg-[#0A58CA] hover:bg-[#084298]"
+                      }`}
+                    >
+                      {submitted ? "¡Enviado!" : "Enviar Experiencia"}
+                    </button>
+                  </div>
 
                 </form>
               </div>
@@ -253,6 +206,5 @@ export default function Index() {
         </div>      
       </IonContent>
     </IonPage>
-
   );
 }

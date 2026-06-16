@@ -12,6 +12,7 @@ import {
   IonRow,
   IonSegment,
   IonSegmentButton,
+  IonRouterLink
 } from '@ionic/react';
 
 type TabId = "graficos" | "tabla" | "proyectos";
@@ -28,7 +29,7 @@ interface Project {
 interface AnalysisRow {
   id: number;
   fecha: string;
-  sentimiento: "Positivo" | "Neutral" | "Negativo";
+  sentimiento: "Alegría" | "Preocupación" | "Enojo";
   confianza: string;
   texto: string;
   palabrasClave: string[];
@@ -71,7 +72,7 @@ const ANALYSIS_ROWS: AnalysisRow[] = [
   {
     id: 1,
     fecha: "2026-05-06",
-    sentimiento: "Positivo",
+    sentimiento: "Alegría",
     confianza: "92%",
     texto: "Excelente servicio, muy profesional y rápido",
     palabrasClave: ["excelente", "profesional", "rápido"],
@@ -79,7 +80,7 @@ const ANALYSIS_ROWS: AnalysisRow[] = [
   {
     id: 2,
     fecha: "2026-05-06",
-    sentimiento: "Positivo",
+    sentimiento: "Alegría",
     confianza: "88%",
     texto: "La calidad del producto superó mis expectativas",
     palabrasClave: ["calidad", "producto"],
@@ -87,7 +88,7 @@ const ANALYSIS_ROWS: AnalysisRow[] = [
   {
     id: 3,
     fecha: "2026-05-05",
-    sentimiento: "Neutral",
+    sentimiento: "Preocupación",
     confianza: "65%",
     texto: "El servicio es aceptable, nada excepcional",
     palabrasClave: ["servicio", "aceptable"],
@@ -95,7 +96,7 @@ const ANALYSIS_ROWS: AnalysisRow[] = [
   {
     id: 4,
     fecha: "2026-05-05",
-    sentimiento: "Negativo",
+    sentimiento: "Enojo",
     confianza: "78%",
     texto: "La entrega tardó más de lo esperado",
     palabrasClave: ["entrega", "tardó"],
@@ -103,7 +104,7 @@ const ANALYSIS_ROWS: AnalysisRow[] = [
   {
     id: 5,
     fecha: "2026-05-04",
-    sentimiento: "Positivo",
+    sentimiento: "Alegría",
     confianza: "95%",
     texto: "Totalmente recomendado, atención al cliente impecable",
     palabrasClave: ["recomendado", "atención", "impecable"],
@@ -111,9 +112,9 @@ const ANALYSIS_ROWS: AnalysisRow[] = [
 ];
 
 const SENTIMENT_STYLES: Record<AnalysisRow["sentimiento"], { bg: string; text: string }> = {
-  Positivo: { bg: "bg-[#DCFCE7]", text: "text-[#15803D]" },
-  Neutral: { bg: "bg-[#FEF3C7]", text: "text-[#A16207]" },
-  Negativo: { bg: "bg-[#FEE2E2]", text: "text-[#DC2626]" },
+  Alegría: { bg: "bg-[#DCFCE7]", text: "text-[#15803D]" },
+  Preocupación: { bg: "bg-[#FEF3C7]", text: "text-[#A16207]" },
+  Enojo: { bg: "bg-[#FEE2E2]", text: "text-[#DC2626]" },
 };
 
 type ChartDatum = {
@@ -130,10 +131,11 @@ type HoverInfo = {
   color: string;
 };
 
+// Datos 
 const SENTIMENT_CHART_DATA: ChartDatum[] = [
-  { label: "Positivo", count: 160, percentage: 52, color: "#3B82F6" },
-  { label: "Neutral", count: 100, percentage: 33, color: "#F59E0B" },
-  { label: "Negativo", count: 46, percentage: 15, color: "#EF4444" },
+  { label: "Alegría", count: 160, percentage: 52, color: "#3B82F6" },
+  { label: "Preocupación", count: 100, percentage: 33, color: "#F59E0B" },
+  { label: "Enojo", count: 46, percentage: 15, color: "#EF4444" },
 ];
 
 const BAR_TICKS = [0, 40, 80, 120, 160];
@@ -164,30 +166,33 @@ function describePieSlice(
 function ChartInfoCard({ info }: { info: HoverInfo | null }) {
   if (!info) {
     return (
-      <div className="rounded-[12px] border border-dashed border-[#C7D2FE] bg-[#F8FAFC] px-4 py-3 text-sm text-[#64748B]">
-        Pasa el mouse por una barra o una porción para ver sus valores.
+      <div className="h-[80px] w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 flex items-center justify-center text-sm text-gray-500">
+        Pasa el cursor por un gráfico
       </div>
     );
   }
 
   return (
-    <div className="rounded-[12px] border border-[#E2E8F0] bg-white px-4 py-3 shadow-sm">
-      <div className="flex items-center gap-2">
-        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: info.color }} />
-        <span className="text-sm font-semibold text-[#0F172B]">{info.label}</span>
+    <div className="h-[80px] w-full max-w-[220px] rounded-xl border border-gray-200 bg-white px-4 py-2 flex flex-col justify-center shadow-sm">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="h-3 w-3 rounded-full" style={{ backgroundColor: info.color }} />
+        <span className="text-[15px] font-semibold text-gray-900">{info.label}</span>
       </div>
-      <div className="mt-2 flex items-center gap-4 text-sm text-[#475569]">
-        <span>
-          Cantidad: <strong className="text-[#0F172B]">{info.count}</strong>
-        </span>
-        <span>
-          Porcentaje: <strong className="text-[#0F172B]">{info.percentage}%</strong>
-        </span>
+      <div className="flex items-center justify-between text-[13px] text-gray-600">
+        <div className="flex flex-col">
+          <span className="text-xs">Cantidad:</span>
+          <strong className="text-gray-900">{info.count}</strong>
+        </div>
+        <div className="flex flex-col">
+          <span className="text-xs">Porcentaje:</span>
+          <strong className="text-gray-900">{info.percentage}%</strong>
+        </div>
       </div>
     </div>
   );
 }
 
+// Gráfico de Barras 
 function SentimentBars({
   onHover,
   onClear,
@@ -203,70 +208,65 @@ function SentimentBars({
   }, []);
 
   return (
-    <div className="relative h-[340px] sm:h-[280px] overflow-visible rounded-[12px] border border-[#E2E8F0] bg-white px-4 pt-4 pb-10">
-      <div className="absolute inset-x-4 top-4 bottom-10">
+    <div className="relative h-[240px] w-full mt-6 mb-8">
+      {/* Líneas de fondo y valores del eje Y */}
+      <div className="absolute inset-x-0 top-0 bottom-0">
         {BAR_TICKS.map((tick) => (
           <div
             key={tick}
-            className="absolute left-10 right-0 border-t border-dashed border-[#E5EAF3]"
+            className="absolute left-8 right-0 border-t border-dashed border-[#E5EAF3]"
             style={{ bottom: `${(tick / 160) * 100}%` }}
           >
-            <span className="absolute -left-9 -top-2 text-xs font-medium text-[#64748B]">
+            <span className="absolute -left-8 -top-2.5 text-[12px] font-medium text-gray-400">
               {tick}
             </span>
           </div>
         ))}
-
-        <div className="absolute inset-x-10 top-0 bottom-0 flex items-end gap-5">
-          {SENTIMENT_CHART_DATA.map((item, index) => {
-            const barHeight = `${(item.count / 160) * 100}%`;
-
-            return (
-              <button
-                key={item.label}
-                type="button"
-                title={`${item.label}: ${item.count} (${item.percentage}%)`}
-                onMouseEnter={() => onHover(item)}
-                onMouseLeave={onClear}
-                onFocus={() => onHover(item)}
-                onBlur={onClear}
-                className="group relative flex h-full flex-1 flex-col items-center justify-end outline-none"
-              >
-                <div
-                  className="w-[78%] rounded-t-[10px] shadow-[0_8px_18px_rgba(59,130,246,0.18)] transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
-                  style={{
-                    height: barHeight,
-                    backgroundColor: item.color,
-                    transform: animate ? "scaleY(1)" : "scaleY(0.08)",
-                    transformOrigin: "bottom",
-                    transitionDelay: `${index * 120}ms`,
-                  }}
-                />
-
-                <div
-                  className={`absolute bottom-[calc(100%+12px)] left-1/2 -translate-x-1/2 rounded-[10px] border border-[#E2E8F0] bg-white px-3 py-2 text-left text-sm shadow-lg transition-all duration-200 ${
-                    animate ? "opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0" : "opacity-0"
-                  }`}
-                >
-                  <div className="font-semibold text-[#0F172B]">{item.label}</div>
-                  <div className="mt-1 text-[#3B82F6]">Cantidad: {item.count}</div>
-                </div>
-
-                <span className="mt-3 text-sm font-medium text-[#475569]">{item.label}</span>
-              </button>
-            );
-          })}
-        </div>
       </div>
 
-      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 text-sm text-[#3B82F6]">
-        <span className="h-3 w-3 rounded-[2px] bg-[#3B82F6]" />
+      {/* Barras */}
+      <div className="absolute inset-x-8 top-0 bottom-0 flex items-end justify-around px-4 sm:px-12">
+        {SENTIMENT_CHART_DATA.map((item, index) => {
+          const barHeight = `${(item.count / 160) * 100}%`;
+
+          return (
+            <button
+              key={item.label}
+              type="button"
+              onMouseEnter={() => onHover(item)}
+              onMouseLeave={onClear}
+              onFocus={() => onHover(item)}
+              onBlur={onClear}
+              className="group relative flex h-full flex-col items-center justify-end outline-none w-full max-w-[65px]"
+            >
+              <div
+                className="w-full rounded-t-md shadow-sm transition-all duration-500 ease-out hover:opacity-80"
+                style={{
+                  height: barHeight,
+                  backgroundColor: item.color,
+                  transform: animate ? "scaleY(1)" : "scaleY(0)",
+                  transformOrigin: "bottom",
+                  transitionDelay: `${index * 100}ms`,
+                }}
+              />
+              {/* Etiquetas del eje X */}
+              <span className="absolute -bottom-7 text-[13px] font-medium text-gray-500 whitespace-nowrap">
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="absolute -bottom-14 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[13px] text-[#3B82F6]">
+        <span className="h-3 w-3 rounded-sm bg-[#3B82F6]" />
         Cantidad
       </div>
     </div>
   );
 }
 
+// Gráfico Circular  
 function SentimentPie({
   onHover,
   onClear,
@@ -281,17 +281,17 @@ function SentimentPie({
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  const cx = 170;
-  const cy = 118;
-  const radius = 78;
-  const labelRadius = 122;
+  const cx = 250; 
+  const cy = 130;
+  const radius = 95;
+  const labelRadius = 155; 
   const total = SENTIMENT_CHART_DATA.reduce((sum, item) => sum + item.count, 0);
 
   let currentAngle = -90;
 
   return (
-    <div className="relative h-[340px] sm:h-[280px] overflow-visible rounded-[12px] border border-[#E2E8F0] bg-white px-4 pt-4 pb-6">
-      <svg viewBox="0 0 360 240" className="h-full w-full overflow-visible">
+    <div className="relative h-[260px] w-full flex items-center justify-center mt-2 mb-4">
+      <svg viewBox="0 0 500 260" className="h-full w-full overflow-visible">
         {SENTIMENT_CHART_DATA.map((item, index) => {
           const sliceAngle = (item.count / total) * 360;
           const startAngle = currentAngle;
@@ -300,9 +300,13 @@ function SentimentPie({
 
           const midAngle = startAngle + sliceAngle / 2;
           const radians = (Math.PI / 180) * midAngle;
+          
           const labelX = cx + labelRadius * Math.cos(radians);
           const labelY = cy + labelRadius * Math.sin(radians);
-          const labelAnchor = labelX >= cx ? "start" : "end";
+          
+          const isRightSide = labelX >= cx;
+          const textAnchor = isRightSide ? "start" : "end";
+          const offsetX = isRightSide ? 8 : -8;
 
           return (
             <g key={item.label}>
@@ -310,10 +314,8 @@ function SentimentPie({
                 d={describePieSlice(cx, cy, radius, startAngle, endAngle)}
                 fill={item.color}
                 stroke="#FFFFFF"
-                strokeWidth="1.5"
-                tabIndex={0}
-                role="img"
-                aria-label={`${item.label}: ${item.count} (${item.percentage}%)`}
+                strokeWidth="2.5"
+                className="cursor-pointer transition-opacity duration-300 hover:opacity-80 outline-none"
                 onMouseEnter={() => onHover(item)}
                 onMouseLeave={onClear}
                 onFocus={() => onHover(item)}
@@ -321,22 +323,25 @@ function SentimentPie({
                 style={{
                   transformBox: "fill-box",
                   transformOrigin: "center",
-                  transition: "transform 700ms ease, opacity 700ms ease",
-                  transitionDelay: `${index * 120}ms`,
-                  transform: animate ? "scale(1)" : "scale(0.1)",
-                  opacity: animate ? 1 : 0.35,
-                  cursor: "pointer",
+                  transition: "transform 700ms ease",
+                  transitionDelay: `${index * 100}ms`,
+                  transform: animate ? "scale(1)" : "scale(0)",
                 }}
               />
-              <title>{`${item.label}: ${item.count} (${item.percentage}%)`}</title>
               <text
-                x={labelX}
+                x={labelX + offsetX}
                 y={labelY}
                 fill={item.color}
-                fontSize="12"
+                fontSize="13"
                 fontWeight="500"
-                textAnchor={labelAnchor}
+                textAnchor={textAnchor}
                 dominantBaseline="middle"
+                style={{
+                  opacity: animate ? 1 : 0,
+                  transition: "opacity 700ms ease",
+                  transitionDelay: `${index * 100 + 400}ms`,
+                  pointerEvents: "none"
+                }}
               >
                 {item.label}: {item.percentage}%
               </text>
@@ -478,24 +483,42 @@ export default function AdminPanel() {
 
   return (
     <IonPage>
-      <IonContent fullscreen className="bg-gradient-to-br from-[#F8FAFC] to-[#F1F5F9]">
-        <div className="min-h-screen overflow-y-auto overflow-x-hidden bg-gradient-to-br from-[#F8FAFC] to-[#F1F5F9] font-[Inter,sans-serif]">
-          <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
-            <div className="flex flex-col gap-2 mb-8">
-              <div className="flex items-center gap-3">
+      <IonContent fullscreen className="font-sans" style={{ '--background': '#F0F5F9' }}>
+        <div className="min-h-full bg-[#F0F5F9] pb-12 relative">
+          
+          {/* Botón Volver */}
+          <div className="absolute top-6 left-6">
+            <IonRouterLink 
+              routerLink="/login" 
+              routerDirection="back" 
+              className="flex flex-col items-center gap-0.5 text-[#0A58CA] hover:text-[#084298] transition-colors"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18L9 12L15 6" />
+              </svg>
+              <span className="text-[15px] font-medium">Volver</span>
+            </IonRouterLink>
+          </div>
+
+          <div className="max-w-[1100px] mx-auto pt-8 px-4 sm:px-6 lg:px-8">
+            
+            {/* Header del Panel */}
+            <div className="bg-white rounded-[14px] shadow-sm py-5 px-8 mb-8 mt-10 w-full max-w-lg mx-auto text-center border border-gray-100 flex flex-col items-center justify-center">
+              <div className="flex items-center justify-center gap-2 mb-1 text-[#0A58CA]">
                 <BrainIcon />
-                <h1 className="text-3xl sm:text-4xl font-bold text-[#0F172B] leading-10">
+                <h1 className="text-[24px] font-medium leading-8 m-0">
                   Panel de Administración
                 </h1>
               </div>
-              <p className="text-base text-[#45556C] font-normal leading-6">
-                Análisis de sentimientos con IA integrada
+              <p className="text-[14px] text-[#555555] m-0">
+                Análisis de sentimientos
               </p>
             </div>
 
-            <IonGrid className="mb-10 p-0">
-              <IonRow className="ion-justify-content-between ion-align-items-stretch">
-                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0">
+            {/* Tarjetas Superiores */}
+            <IonGrid className="mb-6 p-0 max-w-[1000px] mx-auto">
+              <IonRow className="ion-justify-content-center">
+                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0 px-2">
                   <StatCard
                     label="Total Análisis"
                     value="300"
@@ -503,53 +526,56 @@ export default function AdminPanel() {
                     icon={<ChatBubbleIcon />}
                   />
                 </IonCol>
-                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0">
+                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0 px-2">
                   <StatCard
                     label="Sentimiento Positivo"
                     value="52%"
-                    valueColor="text-[#00A63E]"
+                    valueColor="text-[#00C950]"
                     icon={<TrendingUpIcon />}
                   />
                 </IonCol>
-                <IonCol size="12" sizeMd="4">
+                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0 px-2">
                   <StatCard
                     label="Precisión IA"
                     value="86%"
-                    valueColor="text-[#9810FA]"
+                    valueColor="text-[#AD46FF]"
                     icon={<BrainIconLarge />}
                   />
                 </IonCol>
               </IonRow>
             </IonGrid>
 
-            <IonSegment
-              value={activeTab}
-              onIonChange={(event) => {
-                const nextTab = event.detail.value as TabId | undefined;
-                if (nextTab) {
-                  setActiveTab(nextTab);
-                }
-              }}
-              className="mb-6"
-            >
+            {/* Pestañas / Tabs */}
+            <div className="flex items-center gap-6 border-b border-gray-200 mb-8 overflow-x-auto max-w-[1000px] mx-auto">
               {tabs.map((tab) => (
-                <IonSegmentButton key={tab.id} value={tab.id} className="text-sm sm:text-base">
-                  <IonLabel>{tab.label}</IonLabel>
-                </IonSegmentButton>
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`py-3 text-[14px] font-medium whitespace-nowrap border-b-2 transition-colors ${
+                    activeTab === tab.id
+                      ? "border-[#0A58CA] text-[#0A58CA]"
+                      : "border-transparent text-gray-500 hover:text-gray-800"
+                  }`}
+                >
+                  {tab.label}
+                </button>
               ))}
-            </IonSegment>
+            </div>
 
+            {/* Contenido de Gráficos */}
             {activeTab === "graficos" && (
-              <IonGrid className="p-0">
-                <IonRow>
-                  <IonCol size="12" sizeLg="6" className="mb-4 mb-lg-0">
-                    <IonCard className="m-0 h-full rounded-[14px] border border-[#E2E8F0] shadow-sm">
-                      <IonCardContent className="px-6 py-6">
-                        <div className="flex items-start justify-between gap-4 mb-4">
-                          <h2 className="text-[22px] font-semibold leading-8 text-[#0F172B]">
+              <IonGrid className="p-0 max-w-[1000px] mx-auto">
+                <IonRow className="ion-justify-content-center">
+                  
+                  {/* Tarjeta Gráfico de Barras */}
+                  <IonCol size="12" sizeLg="6" className="px-2">
+                    <IonCard className="m-0 h-full rounded-[14px] border border-[#E2E8F0] shadow-sm bg-white overflow-visible">
+                      <IonCardContent className="p-6">
+                        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 mb-6">
+                          <h2 className="text-[18px] font-medium leading-6 text-[#333333]">
                             Distribución de Sentimientos
                           </h2>
-                          <div className="w-[260px] hidden md:block">
+                          <div className="w-full xl:w-auto min-w-[220px]">
                             <ChartInfoCard info={hoverInfo} />
                           </div>
                         </div>
@@ -563,14 +589,15 @@ export default function AdminPanel() {
                     </IonCard>
                   </IonCol>
 
-                  <IonCol size="12" sizeLg="6">
-                    <IonCard className="m-0 h-full rounded-[14px] border border-[#E2E8F0] shadow-sm">
-                      <IonCardContent className="px-6 py-6">
-                        <div className="flex items-start justify-between gap-4 mb-4">
-                          <h2 className="text-[22px] font-semibold leading-8 text-[#0F172B]">
+                  {/* Tarjeta Gráfico de Torta */}
+                  <IonCol size="12" sizeLg="6" className="px-2">
+                    <IonCard className="m-0 h-full rounded-[14px] border border-[#E2E8F0] shadow-sm bg-white overflow-visible">
+                      <IonCardContent className="p-6">
+                        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 mb-6">
+                          <h2 className="text-[18px] font-medium leading-6 text-[#333333]">
                             Proporción de Sentimientos
                           </h2>
-                          <div className="w-[260px] hidden md:block">
+                          <div className="w-full xl:w-auto min-w-[220px]">
                             <ChartInfoCard info={hoverInfo} />
                           </div>
                         </div>
@@ -583,173 +610,181 @@ export default function AdminPanel() {
                       </IonCardContent>
                     </IonCard>
                   </IonCol>
+
                 </IonRow>
               </IonGrid>
             )}
 
+            {/* Contenido de la Tabla */}
             {activeTab === "tabla" && (
-              <IonCard className="m-0 rounded-[14px] border border-[#E2E8F0] shadow-sm overflow-hidden">
-                <IonCardContent className="p-0">
-                  <div className="flex items-center justify-between px-6 py-5 border-b border-[#E2E8F0]">
-                    <h2 className="text-[22px] font-semibold leading-8 text-[#0F172B]">
-                      Análisis Detallado
-                    </h2>
-                    <IonButton fill="solid" color="primary" className="ion-no-margin">
-                      <ExportIcon />
-                      <span className="ml-2">Exportar JSON</span>
-                    </IonButton>
-                  </div>
-
-                  <div className="overflow-x-auto">
-                    <table className="w-full min-w-[980px]">
-                      <thead>
-                        <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0]">
-                          {[
-                            "ID",
-                            "FECHA",
-                            "SENTIMIENTO",
-                            "CONFIANZA",
-                            "TEXTO",
-                            "PALABRAS CLAVE",
-                          ].map((column) => (
-                            <th
-                              key={column}
-                              className="px-6 py-4 text-left text-[12px] font-semibold uppercase tracking-[0.06em] leading-4 text-[#64748B]"
-                            >
-                              {column}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {ANALYSIS_ROWS.map((row) => {
-                          const sentiment = SENTIMENT_STYLES[row.sentimiento];
-
-                          return (
-                            <tr key={row.id} className="border-b border-[#E2E8F0] last:border-b-0">
-                              <td className="px-6 py-[18px] text-sm font-normal text-[#0F172B] leading-5">
-                                {row.id}
-                              </td>
-                              <td className="px-6 py-[18px] text-sm font-normal text-[#475569] leading-5 whitespace-nowrap">
-                                {row.fecha}
-                              </td>
-                              <td className="px-6 py-[18px]">
-                                <IonBadge className={`${sentiment.bg} ${sentiment.text} px-3 py-1`}>
-                                  {row.sentimiento}
-                                </IonBadge>
-                              </td>
-                              <td className="px-6 py-[18px] text-sm font-semibold text-[#0F172B] leading-5 whitespace-nowrap">
-                                {row.confianza}
-                              </td>
-                              <td className="px-6 py-[18px] text-sm font-normal text-[#475569] leading-5">
-                                {row.texto}
-                              </td>
-                              <td className="px-6 py-[18px]">
-                                <div className="flex flex-wrap gap-2">
-                                  {row.palabrasClave.map((keyword) => (
-                                    <IonBadge key={keyword} color="light" className="text-[#2B59FF] px-3 py-1">
-                                      {keyword}
-                                    </IonBadge>
-                                  ))}
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                </IonCardContent>
-              </IonCard>
-            )}
-
-            {activeTab === "proyectos" && (
-              <IonCard className="m-0 rounded-[14px] border border-[#E2E8F0] shadow-sm overflow-hidden">
-                <IonCardContent className="p-0">
-                  <div className="flex items-center justify-between px-6 py-6 border-b border-[#E2E8F0]">
-                    <div className="flex items-center gap-3">
-                      <FolderChartIcon />
-                      <h2 className="text-xl font-semibold text-[#0F172B] leading-7">
-                        Gestión de Proyectos
+              <div className="max-w-[1000px] mx-auto px-2">
+                <IonCard className="m-0 rounded-[14px] border border-[#E2E8F0] shadow-sm overflow-hidden">
+                  <IonCardContent className="p-0">
+                    <div className="flex items-center justify-between px-6 py-5 border-b border-[#E2E8F0]">
+                      <h2 className="text-[20px] font-semibold leading-8 text-[#0F172B]">
+                        Análisis Detallado
                       </h2>
+                      <button className="bg-[#0A58CA] hover:bg-[#084298] text-white flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                        <ExportIcon />
+                        Exportar JSON
+                      </button>
                     </div>
-                    <IonButton fill="solid" color="primary" className="ion-no-margin">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3.33337 8H12.6667" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M8 3.33334V12.6667" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span className="ml-2">Nuevo Proyecto</span>
-                    </IonButton>
-                  </div>
 
-                  <div className="overflow-x-auto">
-                    <table className="w-full min-w-[700px]">
-                      <thead>
-                        <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0]">
-                          {["ID", "Proyecto", "Estado", "Fecha Inicio", "Fecha Fin", "Responsable", "Acciones"].map((col) => (
-                            <th
-                              key={col}
-                              className="px-6 py-3 text-left text-xs font-medium text-[#45556C] uppercase tracking-[0.6px] leading-4"
-                            >
-                              {col}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {projects.map((project, idx) => {
-                          const status = STATUS_STYLES[project.estado];
-                          return (
-                            <tr
-                              key={project.id}
-                              className={`border-b border-[#E2E8F0] last:border-b-0 ${idx % 2 === 0 ? "" : ""}`}
-                            >
-                              <td className="px-6 py-[22px] text-sm font-normal text-[#0F172B] leading-5">
-                                {project.id}
-                              </td>
-                              <td className="px-6 py-[22px] text-sm font-medium text-[#0F172B] leading-5 whitespace-nowrap">
-                                {project.nombre}
-                              </td>
-                              <td className="px-6 py-[22px]">
-                                <IonBadge className={`${status.bg} ${status.text} px-2.5 py-0.5`}>
-                                  {status.label}
-                                </IonBadge>
-                              </td>
-                              <td className="px-6 py-[22px] text-sm font-normal text-[#45556C] leading-5 whitespace-nowrap">
-                                {project.fechaInicio}
-                              </td>
-                              <td className="px-6 py-[22px] text-sm font-normal text-[#45556C] leading-5 whitespace-nowrap">
-                                {project.fechaFin}
-                              </td>
-                              <td className="px-6 py-[22px] text-sm font-normal text-[#45556C] leading-5 whitespace-nowrap">
-                                {project.responsable}
-                              </td>
-                              <td className="px-6 py-[22px]">
-                                <div className="flex items-center gap-2">
-                                  <IonButton fill="clear" size="small" className="w-8 h-8" title="Editar">
-                                    <EditIcon />
-                                  </IonButton>
-                                  <IonButton fill="clear" size="small" className="w-8 h-8" title="Eliminar" onClick={() => handleDelete(project.id)}>
-                                    <DeleteIcon />
-                                  </IonButton>
-                                </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full min-w-[980px]">
+                        <thead>
+                          <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0]">
+                            {[
+                              "ID",
+                              "FECHA",
+                              "SENTIMIENTO",
+                              "CONFIANZA",
+                              "TEXTO",
+                              "PALABRAS CLAVE",
+                            ].map((column) => (
+                              <th
+                                key={column}
+                                className="px-6 py-4 text-left text-[12px] font-semibold uppercase tracking-[0.06em] leading-4 text-[#64748B] whitespace-nowrap"
+                              >
+                                {column}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {ANALYSIS_ROWS.map((row) => {
+                            const sentiment = SENTIMENT_STYLES[row.sentimiento];
+
+                            return (
+                              <tr key={row.id} className="border-b border-[#E2E8F0] last:border-b-0 hover:bg-gray-50 transition-colors">
+                                <td className="px-6 py-[18px] text-sm font-normal text-[#0F172B] leading-5">
+                                  {row.id}
+                                </td>
+                                <td className="px-6 py-[18px] text-sm font-normal text-[#475569] leading-5 whitespace-nowrap">
+                                  {row.fecha}
+                                </td>
+                                <td className="px-6 py-[18px]">
+                                  <span className={`${sentiment.bg} ${sentiment.text} px-3 py-1 rounded-full text-[12px] font-medium whitespace-nowrap inline-block`}>
+                                    {row.sentimiento}
+                                  </span>
+                                </td>
+                                <td className="px-6 py-[18px] text-sm font-semibold text-[#0F172B] leading-5 whitespace-nowrap">
+                                  {row.confianza}
+                                </td>
+                                <td className="px-6 py-[18px] text-sm font-normal text-[#475569] leading-5 min-w-[200px]">
+                                  {row.texto}
+                                </td>
+                                <td className="px-6 py-[18px]">
+                                  <div className="flex flex-wrap gap-2">
+                                    {row.palabrasClave.map((keyword) => (
+                                      <span key={keyword} className="bg-gray-100 border border-gray-200 text-[#0A58CA] px-3 py-1 rounded-full text-[12px] whitespace-nowrap">
+                                        {keyword}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+              </div>
+            )}
+
+            {/* Contenido de Proyectos */}
+            {activeTab === "proyectos" && (
+              <div className="max-w-[1000px] mx-auto px-2">
+                <IonCard className="m-0 rounded-[14px] border border-[#E2E8F0] shadow-sm overflow-hidden">
+                  <IonCardContent className="p-0">
+                    <div className="flex items-center justify-between px-6 py-6 border-b border-[#E2E8F0]">
+                      <div className="flex items-center gap-3">
+                        <FolderChartIcon />
+                        <h2 className="text-[20px] font-semibold text-[#0F172B] leading-7">
+                          Gestión de Proyectos
+                        </h2>
+                      </div>
+                      <button className="bg-[#0A58CA] hover:bg-[#084298] text-white flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M3.33337 8H12.6667" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M8 3.33334V12.6667" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        Nuevo Proyecto
+                      </button>
+                    </div>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full min-w-[700px]">
+                        <thead>
+                          <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0]">
+                            {["ID", "Proyecto", "Estado", "Fecha Inicio", "Fecha Fin", "Responsable", "Acciones"].map((col) => (
+                              <th
+                                key={col}
+                                className="px-6 py-4 text-left text-xs font-semibold text-[#64748B] uppercase tracking-[0.06em] leading-4"
+                              >
+                                {col}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {projects.map((project) => {
+                            const status = STATUS_STYLES[project.estado];
+                            return (
+                              <tr
+                                key={project.id}
+                                className="border-b border-[#E2E8F0] last:border-b-0 hover:bg-gray-50 transition-colors"
+                              >
+                                <td className="px-6 py-[20px] text-sm font-normal text-[#0F172B] leading-5">
+                                  {project.id}
+                                </td>
+                                <td className="px-6 py-[20px] text-sm font-medium text-[#0F172B] leading-5 whitespace-nowrap">
+                                  {project.nombre}
+                                </td>
+                                <td className="px-6 py-[20px]">
+                                  <span className={`${status.bg} ${status.text} px-3 py-1 rounded-full text-[12px] font-medium whitespace-nowrap`}>
+                                    {status.label}
+                                  </span>
+                                </td>
+                                <td className="px-6 py-[20px] text-sm font-normal text-[#45556C] leading-5 whitespace-nowrap">
+                                  {project.fechaInicio}
+                                </td>
+                                <td className="px-6 py-[20px] text-sm font-normal text-[#45556C] leading-5 whitespace-nowrap">
+                                  {project.fechaFin}
+                                </td>
+                                <td className="px-6 py-[20px] text-sm font-normal text-[#45556C] leading-5 whitespace-nowrap">
+                                  {project.responsable}
+                                </td>
+                                <td className="px-6 py-[20px]">
+                                  <div className="flex items-center gap-2">
+                                    <button className="p-1.5 text-gray-500 hover:text-[#0A58CA] hover:bg-[#E3EDFD] rounded-md transition-colors" title="Editar">
+                                      <EditIcon />
+                                    </button>
+                                    <button className="p-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors" title="Eliminar" onClick={() => handleDelete(project.id)}>
+                                      <DeleteIcon />
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                          {projects.length === 0 && (
+                            <tr>
+                              <td colSpan={7} className="px-6 py-12 text-center text-sm text-[#45556C]">
+                                No hay proyectos disponibles.
                               </td>
                             </tr>
-                          );
-                        })}
-                        {projects.length === 0 && (
-                          <tr>
-                            <td colSpan={7} className="px-6 py-12 text-center text-sm text-[#45556C]">
-                              No hay proyectos disponibles.
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
-                </IonCardContent>
-              </IonCard>
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+              </div>
             )}
+            
           </div>
         </div>
       </IonContent>
