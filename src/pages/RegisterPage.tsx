@@ -101,7 +101,7 @@ export default function Index() {
           <div className="w-full max-w-[440px] bg-white rounded-xl shadow-lg p-8 flex flex-col gap-6">
             
             {/* Título */}
-            <h1 className="text-center text-[26px] font-medium text-[#0A58CA] m-0 mb-2">
+            <h1 className="text-center text-[28px] font-medium text-[#0A58CA] m-0 mb-2">
               Registro de Usuario
             </h1>
 
