@@ -42,8 +42,8 @@ const PROJECTS: Project[] = [
     type: "infraestructura",
     description: "Ampliación y modernización del puente sur",
     status: "pending",
-    lat: -33.618, 
-    lng: -71.610,
+    lat: -33.650971, 
+    lng: -71.623289,
   },
   {
     id: 4,
@@ -51,8 +51,8 @@ const PROJECTS: Project[] = [
     type: "público",
     description: "Renovación de espacios públicos y jardines",
     status: "active",
-    lat: -33.633, 
-    lng: -71.626,
+    lat: -33.653558, 
+    lng: -71.612585,
   },
 ];
 
@@ -65,7 +65,7 @@ const STATUS_LABELS: Record<string, string> = {
 function createRedMarkerIcon() {
   return L.divIcon({
     className: "",
-    html: `<svg width="24" height="30" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    html: `<svg width="100%" height="100%" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <filter id="shadow">
         <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.25)"/>
       </filter>
@@ -74,9 +74,9 @@ function createRedMarkerIcon() {
         <path d="M16 17.3333C18.2091 17.3333 20 15.5425 20 13.3333C20 11.1242 18.2091 9.33334 16 9.33334C13.7909 9.33334 12 11.1242 12 13.3333C12 15.5425 13.7909 17.3333 16 17.3333Z" fill="#8B0000" />
       </g>
     </svg>`,
-    iconSize: [24, 30],
-    iconAnchor: [12, 30],
-    popupAnchor: [0, -30],
+    iconSize: [56, 70],
+    iconAnchor: [28, 70],
+    popupAnchor: [0, -60],
   });
 }
 
