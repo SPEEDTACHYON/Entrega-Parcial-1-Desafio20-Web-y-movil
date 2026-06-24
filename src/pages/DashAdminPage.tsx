@@ -131,7 +131,7 @@ type HoverInfo = {
   color: string;
 };
 
-// Datos 
+// Datos actualizados con las etiquetas del mockup
 const SENTIMENT_CHART_DATA: ChartDatum[] = [
   { label: "Alegría", count: 160, percentage: 52, color: "#3B82F6" },
   { label: "Preocupación", count: 100, percentage: 33, color: "#F59E0B" },
@@ -163,6 +163,7 @@ function describePieSlice(
   ].join(" ");
 }
 
+// Tarjeta de información ajustada al mockup (Arriba a la derecha)
 function ChartInfoCard({ info }: { info: HoverInfo | null }) {
   if (!info) {
     return (
@@ -192,7 +193,7 @@ function ChartInfoCard({ info }: { info: HoverInfo | null }) {
   );
 }
 
-// Gráfico de Barras 
+// 1. Gráfico de Barras Corregido
 function SentimentBars({
   onHover,
   onClear,
@@ -258,6 +259,7 @@ function SentimentBars({
         })}
       </div>
 
+      {/* Leyenda "Cantidad" movida más abajo para no chocar */}
       <div className="absolute -bottom-14 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[13px] text-[#3B82F6]">
         <span className="h-3 w-3 rounded-sm bg-[#3B82F6]" />
         Cantidad
@@ -266,7 +268,7 @@ function SentimentBars({
   );
 }
 
-// Gráfico Circular  
+// 2. Gráfico Circular Corregido (Más ancho para que no se corten los textos)
 function SentimentPie({
   onHover,
   onClear,
@@ -281,6 +283,7 @@ function SentimentPie({
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
+  // Centro y radios ajustados para un viewBox más amplio (500x260)
   const cx = 250; 
   const cy = 130;
   const radius = 95;
@@ -291,6 +294,7 @@ function SentimentPie({
 
   return (
     <div className="relative h-[260px] w-full flex items-center justify-center mt-2 mb-4">
+      {/* ViewBox ensanchado a 500 para dar espacio a los lados */}
       <svg viewBox="0 0 500 260" className="h-full w-full overflow-visible">
         {SENTIMENT_CHART_DATA.map((item, index) => {
           const sliceAngle = (item.count / total) * 360;
@@ -438,16 +442,6 @@ function TrendingUpIcon() {
   );
 }
 
-function BrainIconLarge() {
-  return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M24 9.99999C24.0024 9.20006 23.8448 8.40772 23.5364 7.66959C23.2281 6.93146 22.7752 6.26245 22.2046 5.70189C21.6339 5.14132 20.9569 4.70054 20.2133 4.40546C19.4698 4.11037 18.6748 3.96695 17.875 3.98362C17.0752 4.00029 16.2869 4.17672 15.5563 4.50253C14.8257 4.82834 14.1677 5.29695 13.6208 5.8808C13.074 6.46466 12.6494 7.15196 12.3721 7.9023C12.0948 8.65263 11.9703 9.45085 12.006 10.25C10.8304 10.5523 9.73903 11.1181 8.81449 11.9046C7.88995 12.6911 7.1565 13.6777 6.66971 14.7897C6.18292 15.9016 5.95555 17.1098 6.0048 18.3226C6.05406 19.5355 6.37866 20.7212 6.95403 21.79C5.94239 22.6119 5.14688 23.6684 4.6367 24.8679C4.12653 26.0673 3.91714 27.3732 4.02675 28.672C4.13637 29.9708 4.56166 31.2231 5.26564 32.32C5.96962 33.417 6.93095 34.3253 8.06603 34.966C7.92586 36.0505 8.00951 37.1522 8.3118 38.203C8.6141 39.2539 9.12862 40.2317 9.8236 41.0759C10.5186 41.9201 11.3792 42.6129 12.3525 43.1115C13.3257 43.6101 14.3908 43.9039 15.482 43.9747C16.5732 44.0455 17.6673 43.8918 18.6968 43.5232C19.7263 43.1546 20.6693 42.5788 21.4675 41.8315C22.2658 41.0842 22.9024 40.1811 23.338 39.1781C23.7735 38.1751 23.9989 37.0935 24 36V9.99999Z" stroke="#AD46FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M24 9.99999C23.9977 9.20006 24.1553 8.40772 24.4636 7.66959C24.772 6.93146 25.2248 6.26245 25.7955 5.70189C26.3662 5.14132 27.0432 4.70054 27.7867 4.40546C28.5302 4.11037 29.3253 3.96695 30.125 3.98362C30.9248 4.00029 31.7132 4.17672 32.4438 4.50253C33.1743 4.82834 33.8324 5.29695 34.3792 5.8808C34.9261 6.46466 35.3506 7.15196 35.6279 7.9023C35.9052 8.65263 36.0297 9.45085 35.994 10.25C37.1696 10.5523 38.261 11.1181 39.1856 11.9046C40.1101 12.6911 40.8436 13.6777 41.3303 14.7897C41.8171 15.9016 42.0445 17.1098 41.9953 18.3226C41.946 19.5355 41.6214 20.7212 41.046 21.79C42.0577 22.6119 42.8532 23.6684 43.3633 24.8679C43.8735 26.0673 44.0829 27.3732 43.9733 28.672C43.8637 29.9708 43.4384 31.2231 42.7344 32.32C42.0304 33.417 41.0691 34.3253 39.934 34.966C40.0742 36.0505 39.9905 37.1522 39.6883 38.203C39.386 39.2539 38.8714 40.2317 38.1765 41.0759C37.4815 41.9201 36.6208 42.6129 35.6476 43.1115C34.6744 43.6101 33.6093 43.9039 32.5181 43.9747C31.4269 44.0455 30.3327 43.8918 29.3033 43.5232C28.2738 43.1546 27.3308 42.5788 26.5325 41.8315C25.7342 41.0842 25.0977 40.1811 24.6621 39.1781C24.2265 38.1751 24.0012 37.0935 24 36V9.99999Z" stroke="#AD46FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M30 26C28.3209 25.4093 26.8546 24.334 25.7867 22.91C24.7187 21.486 24.0969 19.7773 24 18C23.9031 19.7773 23.2813 21.486 22.2133 22.91C21.1454 24.334 19.6791 25.4093 18 26" stroke="#AD46FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-
 function ExportIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -516,9 +510,9 @@ export default function AdminPanel() {
             </div>
 
             {/* Tarjetas Superiores */}
-            <IonGrid className="mb-6 p-0 max-w-[1000px] mx-auto">
+            <IonGrid className="mb-6 p-0 max-w-[800px] mx-auto">
               <IonRow className="ion-justify-content-center">
-                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0 px-2">
+                <IonCol size="12" sizeMd="6" className="mb-4 mb-md-0 px-2">
                   <StatCard
                     label="Total Análisis"
                     value="300"
@@ -526,20 +520,12 @@ export default function AdminPanel() {
                     icon={<ChatBubbleIcon />}
                   />
                 </IonCol>
-                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0 px-2">
+                <IonCol size="12" sizeMd="6" className="mb-4 mb-md-0 px-2">
                   <StatCard
                     label="Sentimiento Positivo"
                     value="52%"
                     valueColor="text-[#00C950]"
                     icon={<TrendingUpIcon />}
-                  />
-                </IonCol>
-                <IonCol size="12" sizeMd="4" className="mb-4 mb-md-0 px-2">
-                  <StatCard
-                    label="Precisión IA"
-                    value="86%"
-                    valueColor="text-[#AD46FF]"
-                    icon={<BrainIconLarge />}
                   />
                 </IonCol>
               </IonRow>
@@ -568,14 +554,14 @@ export default function AdminPanel() {
                 <IonRow className="ion-justify-content-center">
                   
                   {/* Tarjeta Gráfico de Barras */}
-                  <IonCol size="12" sizeLg="6" className="px-2">
+                  <IonCol size="12" sizeLg="6" className="mb-4 mb-lg-0 px-2">
                     <IonCard className="m-0 h-full rounded-[14px] border border-[#E2E8F0] shadow-sm bg-white overflow-visible">
-                      <IonCardContent className="p-6">
+                      <IonCardContent className="p-6 flex flex-col gap-6">
                         <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 mb-6">
-                          <h2 className="text-[18px] font-medium leading-6 text-[#333333]">
+                          <h2 className="text-[18px] font-medium leading-6 text-[#333333] max-w-[180px]">
                             Distribución de Sentimientos
                           </h2>
-                          <div className="w-full xl:w-auto min-w-[220px]">
+                          <div className="w-full xl:w-auto min-w-[200px]">
                             <ChartInfoCard info={hoverInfo} />
                           </div>
                         </div>
@@ -592,12 +578,12 @@ export default function AdminPanel() {
                   {/* Tarjeta Gráfico de Torta */}
                   <IonCol size="12" sizeLg="6" className="px-2">
                     <IonCard className="m-0 h-full rounded-[14px] border border-[#E2E8F0] shadow-sm bg-white overflow-visible">
-                      <IonCardContent className="p-6">
+                      <IonCardContent className="p-6 flex flex-col gap-6">
                         <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 mb-6">
-                          <h2 className="text-[18px] font-medium leading-6 text-[#333333]">
+                          <h2 className="text-[18px] font-medium leading-6 text-[#333333] max-w-[180px]">
                             Proporción de Sentimientos
                           </h2>
-                          <div className="w-full xl:w-auto min-w-[220px]">
+                          <div className="w-full xl:w-auto min-w-[200px]">
                             <ChartInfoCard info={hoverInfo} />
                           </div>
                         </div>
